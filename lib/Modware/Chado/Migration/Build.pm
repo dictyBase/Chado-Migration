@@ -267,7 +267,11 @@ sub ACTION_prepare_migration {
                 $self->args('migration_folder'),
                 '_common', $tag, $version_set->[0] . '-' . $version_set->[1]
             ),
-            { verbose => 1 }
+            catdir(
+                $self->args('migration_folder'),
+                '_preprocess_schema', $tag,
+                $version_set->[0] . '-' . $version_set->[1]
+            ),
         );
     }
     else {
@@ -277,7 +281,11 @@ sub ACTION_prepare_migration {
                 '_common', $tag,
                 $version_set->[$_] . '-' . $version_set->[ $_ + 1 ]
             ),
-            { verbose => 1 }
+            catdir(
+                $self->args('migration_folder'),
+                '_preprocess_schema', $tag,
+                $version_set->[$_] . '-' . $version_set->[ $_ + 1 ]
+            ),
         ) for 0 .. scalar @$version_set - 2;
     }
 }
