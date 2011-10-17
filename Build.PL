@@ -7,13 +7,13 @@ use Modware::Chado::Migration::Build;
 
 my %module_build_args = (
     'build_requires' => { 'Module::Build' => '0.3601' },
-    'dist_abstract'        => 'Module for chado database migration',
-    'dist_author'          => ['Siddhartha Basu <biosidd@gmail.com>'],
-    'dist_name'            => 'Dicty-Migration',
-    'dist_version'         => '0.0010',
-    'license'              => 'perl',
-    'module_name'          => 'Modware::Migration',
-    'recommends'           => { 'DBD::SQLite' => '1.33' },
+    'dist_abstract'  => 'Module for chado database migration',
+    'dist_author'  => ['Siddhartha Basu <siddhartha-basu@northwestern.edu>'],
+    'dist_name'    => 'Modware-Chado-Migration',
+    'dist_version' => '0.0010',
+    'license'      => 'perl',
+    'module_name'  => 'Modware::Chado::Migration',
+    'recommends'   => { 'DBD::SQLite' => '1.33', App::pmuninstall => '0.24' },
     'recursive_test_files' => 1,
     'build_requires'       => {
         'DBIx::Class::DeploymentHandler' => '0.001005',
