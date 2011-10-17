@@ -1,11 +1,21 @@
 cover_db
+tmp
+log
+*DS_Store*
 META.yml
 Makefile
 blib
 inc
 pm_to_blib
-MANIFEST
+MANIFEST*
 Makefile.old
 nytprof.out
 MANIFEST.bak
 *.sw[po]
+Build
+MYMETA*
+_build
+bcs_local
+
+#exclude Build.PL
+!Build.PL
