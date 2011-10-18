@@ -20,3 +20,5 @@ data
 
 #exclude Build.PL
 !Build.PL
+.carton/
+local/
