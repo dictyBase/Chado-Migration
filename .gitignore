@@ -16,6 +16,7 @@ Build
 MYMETA*
 _build
 bcs_local
+data
 
 #exclude Build.PL
 !Build.PL
