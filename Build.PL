@@ -13,7 +13,7 @@ my %module_build_args = (
     'dist_version' => '0.0010',
     'license'      => 'perl',
     'module_name'  => 'Modware::Chado::Migration',
-    'recommends'   => { 'DBD::SQLite' => '1.33', App::pmuninstall => '0.24' },
+    'recommends' => { 'DBD::SQLite' => '1.33', 'App::pmuninstall' => '0.24' },
     'recursive_test_files' => 1,
     'build_requires'       => {
         'DBIx::Class::DeploymentHandler' => '0.001005',
@@ -32,6 +32,7 @@ my %module_build_args = (
         password         => { type => ':s' },
         version          => { type => ':f' },
         migration_folder => { type => ':s' },
+        release          => { type => ':s' },
         schema_class => { type => ':s', default => 'Modware::Chado::Schema' },
         chado_version => { type => ':f', default => 1.2 }
     }
