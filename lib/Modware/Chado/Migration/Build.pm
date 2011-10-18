@@ -2,8 +2,9 @@ package Modware::Chado::Migration::Build;
 
 use warnings;
 use strict;
+use Try::Tiny;
 use File::Basename;
-use Scalar::Util qw/looks_like_number/;
+use Scalar::Util qw/looks_like_number reftype/;
 use namespace::autoclean;
 use Moose;
 use File::Spec::Functions;
@@ -401,19 +402,13 @@ sub ACTION_schema_version_in_db {
     print $_[0]->_schema_version_in_db, "\n";
 }
 
-sub ACTION_add_data_patch {
+sub ACTION_add_patch {
     my ( $self, $patch ) = @_;
     die "no patch name given\n" if !$patch;
 
     $self->dbd;
-    my $release;
-    if ( $self->args('release') ) {
-        $release = $self->args('release');
-    }
-    else {
-        $release = $self->prompt('[Enter release no]: ');
-        die "need a release no for adding data patch\n" if !$release;
-    }
+    my $release = $self->_release;
+
     my $folder = catdir( $self->args('migration_folder'),
         $self->dbi_driver, 'data_patch', $release );
     make_path $folder;
@@ -443,6 +438,8 @@ sub ACTION_add_data_patch {
     	my ($dh, $dir) = @_;
     	# - $dh: Modware::Chado::Migration deployment handler object
     	#       call $dh->schema to get Bio::Chado::Schema object
+    	# ** make sure you use transaction for writing to database
+
     	# - $dir: A Path::Class::Dir object representing the data folder. 
 
     	## -- write your patch code below
@@ -454,9 +451,104 @@ PATCH
 }
 
 sub ACTION_run_all_patches {
+    my ($self) = @_;
+    my $release = $self->_release;
+    $self->dbd;
+    my $dir = Path::Class::Dir->new(
+        catdir(
+            $self->args('migration_folder'), $self->dbi_driver,
+            'data_patch',                    $release,
+        )
+    );
+    for my $patch ( $self->_sorted_patch_files($dir) ) {
+        $self->_run_patch_file($patch);
+    }
+
 }
 
 sub ACTION_run_patch {
+    my ( $self, $patch ) = @_;
+    die "no patch name given to run\n" if !$patch;
+
+    my $release = $self->_release;
+    $self->dbd;
+    my $file = Path::Class::File->new(
+        catfile(
+            $self->args('migration_folder'), $self->dbi_driver,
+            'data_patch',                    $release,
+            $patch
+        )
+    );
+    die "file $patch do not exist\n" if !-e $file->stringify;
+    $self->_run_patch_file($file);
+}
+
+sub ACTION_list_patches {
+   my ($self) = @_;
+    my $release = $self->_release;
+    $self->dbd;
+    my $dir = Path::Class::Dir->new(
+        catdir(
+            $self->args('migration_folder'), $self->dbi_driver,
+            'data_patch',                    $release,
+        )
+    );
+
+    warn "----- List of patches for release: $release\n";
+    for my $patch ( $self->_sorted_patch_files($dir) ) {
+    	warn $patch->stringify, "\n";
+    }
+}
+
+sub _sorted_patch_files {
+    my ( $self, $dir ) = @_;
+
+    my @sorted_files = map { $_->[1] } sort { $a->[0] <=> $b->[0] }
+        grep { looks_like_number( $_->[0] ) }
+        map { [ ( basename( $_->stringify ) =~ /^(\d+)\S+$/ )[0], $_ ] }
+        grep { !$_->is_dir } $dir->children;
+
+    return @sorted_files if @sorted_files;
+}
+
+sub _run_patch_file {
+    my ( $self, $file ) = @_;
+    my $content    = $file->slurp;
+    my $subroutine = eval "$content";
+    if ($@) {
+        carp "Issue in loading code from ", $file->stringify, " :$@";
+    }
+
+    if ( reftype($subroutine) eq 'CODEREF' ) {
+        try {
+            $self->_run_code( $file, $subroutine );
+        }
+        catch {
+            croak "Unable to run code $_\n";
+        };
+    }
+    else {
+        warn "expecting coderef from ", $file->stringify, " not defined\n";
+        warn "create a stub patch script file by running ./Build add_patch\n";
+    }
+}
+
+sub _run_code {
+    my ( $self, $file, $coderef ) = @_;
+    warn " .. running coderef from ", $file->stringify, " ..... \n";
+    $coderef->(
+        $self->deploy_handler,
+        Path::Class::Dir->new( $self->args('data_dir') )
+    );
+}
+
+sub _release {
+    my ($self) = @_;
+    return $self->args('release') if $self->args('release');
+
+    $release = $self->prompt('[Enter release no]: ');
+    die "need a release no for adding data patch\n" if !$release;
+    return $release;
 }
 
 sub _setup {
