@@ -14,7 +14,11 @@ my %module_build_args = (
     'dist_version' => '0.0010',
     'license'      => 'perl',
     'module_name'  => 'Modware::Chado::Migration',
-    'recommends' => { 'DBD::SQLite' => '1.33', 'App::pmuninstall' => '0.24' },
+    'recommends'   => {
+        'DBD::SQLite'      => '1.33',
+        'App::pmuninstall' => '0.24',
+        'Carton'           => ''
+    },
     'recursive_test_files' => 1,
     'build_requires'       => {
         'DBIx::Class::DeploymentHandler' => '0.001005',
@@ -24,8 +28,8 @@ my %module_build_args = (
         'Class::Inspector'               => '1.25',
         'Class::Unload'                  => '0.07',
         'App::cpanminus'                 => '1.4008',
-        'Bio::Chado::Schema'             => '0.09000', 
-        'Path::Class' => '0.24'
+        'Bio::Chado::Schema'             => '0.09000',
+        'Path::Class'                    => '0.24'
     },
     'script_files' => [],
     get_options    => {
@@ -48,6 +52,6 @@ if ( !$build->args('migration_folder') ) {
 if ( !$build->args('data_dir') ) {
     my $dir = catdir( $build->base_dir, 'data' );
     make_path $dir;
-    $build->args( 'data_dir' ,  $dir );
+    $build->args( 'data_dir', $dir );
 }
 $build->create_build_script;
