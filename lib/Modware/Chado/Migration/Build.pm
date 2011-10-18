@@ -2,6 +2,8 @@ package Modware::Chado::Migration::Build;
 
 use warnings;
 use strict;
+use File::Basename;
+use Scalar::Util qw/looks_like_number/;
 use namespace::autoclean;
 use Moose;
 use File::Spec::Functions;
@@ -16,6 +18,7 @@ use File::Find::Rule;
 use File::Path qw/make_path remove_tree/;
 use Modware::Chado::Migration;
 use Modware::Chado::Schema;
+use Path::Class;
 
 extends 'Module::Build';
 
@@ -396,6 +399,64 @@ sub ACTION_chado_version_in_db {
 
 sub ACTION_schema_version_in_db {
     print $_[0]->_schema_version_in_db, "\n";
+}
+
+sub ACTION_add_data_patch {
+    my ( $self, $patch ) = @_;
+    die "no patch name given\n" if !$patch;
+
+    $self->dbd;
+    my $release;
+    if ( $self->args('release') ) {
+        $release = $self->args('release');
+    }
+    else {
+        $release = $self->prompt('[Enter release no]: ');
+        die "need a release no for adding data patch\n" if !$release;
+    }
+    my $folder = catdir( $self->args('migration_folder'),
+        $self->dbi_driver, 'data_patch', $release );
+    make_path $folder;
+
+    # -- sorted files based on leading edge number
+    my @sorted_num = sort { $b <=> $a }
+        grep { looks_like_number($_) }
+        map { ( basename( $_->stringify ) =~ /^(\d+)\S+$/ )[0] }
+        grep { !$_->is_dir } Path::Class::Dir->new($folder)->children;
+
+    my $patch_file;
+    if (@sorted_num) {
+        my $next_num = $sorted_num[0] + 001;
+        $patch_file = Path::Class::Dir->new($folder)
+            ->file( $next_num . $patch . '.pl' );
+    }
+    else {
+        $patch_file
+            = Path::Class::Dir->new($folder)->file( '001' . $patch . '.pl' );
+    }
+    my $output = $patch_file->openw;
+    $output->print(<<PATCH);
+    ## -- patch script created by Modware::Chado::Migration module
+    use strict;
+
+    sub {
+    	my ($dh, $dir) = @_;
+    	# - $dh: Modware::Chado::Migration deployment handler object
+    	#       call $dh->schema to get Bio::Chado::Schema object
+    	# - $dir: A Path::Class::Dir object representing the data folder. 
+
+    	## -- write your patch code below
+    }
+PATCH
+
+    $output->close;
+    warn "created patch ", $patch_file->stringify, "\n";
+}
+
+sub ACTION_run_all_patches {
+}
+
+sub ACTION_run_patch {
 }
 
 sub _setup {
