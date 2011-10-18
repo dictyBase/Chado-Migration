@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use DBI;
 use File::Spec::Functions;
+use File::Path qw/make_path/;
 use lib 'lib';
 use Modware::Chado::Migration::Build;
 
@@ -33,6 +34,7 @@ my %module_build_args = (
         version          => { type => ':f' },
         migration_folder => { type => ':s' },
         release          => { type => ':s' },
+        data_dir         => { type => ':s' },
         schema_class => { type => ':s', default => 'Modware::Chado::Schema' },
         chado_version => { type => ':f', default => 1.2 }
     }
@@ -41,5 +43,10 @@ my %module_build_args = (
 my $build = Modware::Chado::Migration::Build->new(%module_build_args);
 if ( !$build->args('migration_folder') ) {
     $build->args( 'migration_folder', catdir( $build->base_dir, 'db' ) );
+}
+if ( !$build->args('data_dir') ) {
+    my $dir = catdir( $build->base_dir, 'data' );
+    make_path $dir;
+    $build->args( 'data_dir' ,  $dir );
 }
 $build->create_build_script;
