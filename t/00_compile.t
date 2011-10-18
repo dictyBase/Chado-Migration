@@ -1,4 +1,4 @@
 use strict;
 use Test::More tests => 1;
 
-BEGIN { use_ok 'Dicty::Migration' }
+BEGIN { use_ok 'Modware::Chado::Migration' }
