@@ -2,6 +2,7 @@ package Modware::Chado::Migration::Build;
 
 use warnings;
 use strict;
+use Carp;
 use Try::Tiny;
 use File::Basename;
 use Scalar::Util qw/looks_like_number reftype/;
@@ -403,15 +404,13 @@ sub ACTION_schema_version_in_db {
 }
 
 sub ACTION_add_patch {
-    my ( $self, $patch ) = @_;
-    die "no patch name given\n" if !$patch;
+    my ($self) = @_;
+    my $arr = $self->args('ARGV');
+    die "no patch name given\n" if !$arr->[0];
+    my $patch = $arr->[0];
 
-    $self->dbd;
-    my $release = $self->_release;
-
-    my $folder = catdir( $self->args('migration_folder'),
-        $self->dbi_driver, 'data_patch', $release );
-    make_path $folder;
+    my $folder = $self->_patch_folder;
+    make_path $folder->stringify;
 
     # -- sorted files based on leading edge number
     my @sorted_num = sort { $b <=> $a }
@@ -421,16 +420,14 @@ sub ACTION_add_patch {
 
     my $patch_file;
     if (@sorted_num) {
-        my $next_num = $sorted_num[0] + 001;
-        $patch_file = Path::Class::Dir->new($folder)
-            ->file( $next_num . $patch . '.pl' );
+        my $next_num = sprintf "%03d", $sorted_num[0] + 1;
+        $patch_file = $folder->file( $next_num . $patch . '.pl' );
     }
     else {
-        $patch_file
-            = Path::Class::Dir->new($folder)->file( '001' . $patch . '.pl' );
+        $patch_file = $folder->file( '001' . $patch . '.pl' );
     }
     my $output = $patch_file->openw;
-    $output->print(<<PATCH);
+    $output->print(<<'PATCH');
     ## -- patch script created by Modware::Chado::Migration module
     use strict;
 
@@ -442,7 +439,15 @@ sub ACTION_add_patch {
 
     	# - $dir: A Path::Class::Dir object representing the data folder. 
 
-    	## -- write your patch code below
+    	## -- patch code below
+
+    	my $schema = $dh->schema;
+		# -- code below run under a transaction
+    	my $guard = $schema->txn_scope_guard;
+
+		
+		$guard->commit;
+
     }
 PATCH
 
@@ -452,52 +457,53 @@ PATCH
 
 sub ACTION_run_all_patches {
     my ($self) = @_;
-    my $release = $self->_release;
-    $self->dbd;
-    my $dir = Path::Class::Dir->new(
-        catdir(
-            $self->args('migration_folder'), $self->dbi_driver,
-            'data_patch',                    $release,
-        )
-    );
-    for my $patch ( $self->_sorted_patch_files($dir) ) {
+    for my $patch ( $self->_sorted_patch_files( $self->_patch_folder ) ) {
         $self->_run_patch_file($patch);
     }
-
 }
 
 sub ACTION_run_patch {
-    my ( $self, $patch ) = @_;
-    die "no patch name given to run\n" if !$patch;
+    my ($self) = @_;
+    my $arr = $self->args('ARGV');
+    die "no patch name given\n" if !$arr->[0];
+    my $patch = $arr->[0];
 
-    my $release = $self->_release;
-    $self->dbd;
-    my $file = Path::Class::File->new(
-        catfile(
-            $self->args('migration_folder'), $self->dbi_driver,
-            'data_patch',                    $release,
-            $patch
-        )
-    );
-    die "file $patch do not exist\n" if !-e $file->stringify;
+    my $file = $self->_patch_folder->file($patch);
+    die "file $patch do not exist\n" if !-e $file;
     $self->_run_patch_file($file);
 }
 
 sub ACTION_list_patches {
-   my ($self) = @_;
+    my ($self) = @_;
+    my $dir = $self->_patch_folder;
+    if ( !-e $dir ) {
+        warn "$dir do not exist\n";
+        return;
+    }
+
+    warn "----- List of patches for release: ", $self->args('release'),
+        " ----\n";
+    for my $patch ( $self->_sorted_patch_files($dir) ) {
+        warn "$patch\n";
+    }
+}
+
+sub ACTION_set_release {
+    my ($self) = @_;
+    my $arr = $self->args('ARGV');
+    die "no release no given\n" if !$arr->[0];
+    $self->args( 'release', $arr->[0] );
+}
+
+sub _patch_folder {
+    my ($self) = @_;
     my $release = $self->_release;
-    $self->dbd;
-    my $dir = Path::Class::Dir->new(
+    return Path::Class::Dir->new(
         catdir(
-            $self->args('migration_folder'), $self->dbi_driver,
-            'data_patch',                    $release,
+            $self->args('migration_folder'), '_common',
+            'data_patch',                 $release
         )
     );
-
-    warn "----- List of patches for release: $release\n";
-    for my $patch ( $self->_sorted_patch_files($dir) ) {
-    	warn $patch->stringify, "\n";
-    }
 }
 
 sub _sorted_patch_files {
@@ -519,16 +525,18 @@ sub _run_patch_file {
         carp "Issue in loading code from ", $file->stringify, " :$@";
     }
 
-    if ( reftype($subroutine) eq 'CODEREF' ) {
+    if ( reftype($subroutine) eq 'CODE' ) {
         try {
             $self->_run_code( $file, $subroutine );
         }
         catch {
-            croak "Unable to run code $_\n";
+            carp "Unable to run code $_\n";
         };
     }
     else {
-        warn "expecting coderef from ", $file->stringify, " not defined\n";
+        warn "got ", reftype $subroutine, " from the $file\n";
+        warn "expecting coderef from ", $file->stringify,
+            "  that is not defined\n";
         warn "create a stub patch script file by running ./Build add_patch\n";
     }
 }
@@ -536,6 +544,8 @@ sub _run_patch_file {
 sub _run_code {
     my ( $self, $file, $coderef ) = @_;
     warn " .. running coderef from ", $file->stringify, " ..... \n";
+    $self->dbd;
+    $self->_setup if !$self->deploy_handler;
     $coderef->(
         $self->deploy_handler,
         Path::Class::Dir->new( $self->args('data_dir') )
@@ -546,8 +556,9 @@ sub _release {
     my ($self) = @_;
     return $self->args('release') if $self->args('release');
 
-    $release = $self->prompt('[Enter release no]: ');
-    die "need a release no for adding data patch\n" if !$release;
+    my $release = $self->prompt('[Enter release no]:');
+    die "need a release no for patch commands\n" if !$release;
+    $self->args( 'release', $release );
     return $release;
 }
 
