@@ -24,7 +24,8 @@ my %module_build_args = (
         'Class::Inspector'               => '1.25',
         'Class::Unload'                  => '0.07',
         'App::cpanminus'                 => '1.4008',
-        'Bio::Chado::Schema'             => '0.09000'
+        'Bio::Chado::Schema'             => '0.09000', 
+        'Path::Class' => '0.24'
     },
     'script_files' => [],
     get_options    => {
