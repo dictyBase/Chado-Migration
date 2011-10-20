@@ -1,17 +1,14 @@
-package Modware::Chado::Schema;
+package Modware::Chado::Schema::Result::Sequence::Synonym;
 
-use warnings;
 use strict;
-use base qw/DBIx::Class::Schema/;
 
 # Other modules:
+use base qw/Bio::Chado::Schema::Result::Sequence::Synonym/;
 
 # Module implementation
 #
-our $VERSION = '0.08002';
 
-__PACKAGE__->load_namespaces(
-    result_namespace => [ '+Bio::Chado::Schema::Result', 'Result' ] );
+__PACKAGE__->table("synonym_");
 
 1;    # Magic true value required at end of module
 

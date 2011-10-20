@@ -497,11 +497,19 @@ sub ACTION_set_release {
 
 sub _patch_folder {
     my ($self) = @_;
+    $self->dbd    if !$self->dbi_driver;
+    $self->_setup if !$self->deploy_handler;
+    my $schema_ver = $self->_schema_version_in_db;
+    if ( !$schema_ver ) {
+        die "database is not under version control: patch cannot be run\n";
+    }
+
     my $release = $self->_release;
     return Path::Class::Dir->new(
         catdir(
             $self->args('migration_folder'), '_common',
-            'data_patch',                 $release
+            'data_patch',                    $schema_ver,
+            $release
         )
     );
 }

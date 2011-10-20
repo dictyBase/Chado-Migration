@@ -1,17 +1,28 @@
-package Modware::Chado::Schema;
+package Modware::Chado::Schema::Result::Sequence::Feature;
 
-use warnings;
 use strict;
-use base qw/DBIx::Class::Schema/;
 
 # Other modules:
+use base qw/Bio::Chado::Schema::Result::Sequence::Feature/;
 
 # Module implementation
 #
-our $VERSION = '0.08002';
+__PACKAGE__->table('feature');
+__PACKAGE__->add_columns(
+    "created_by",
+    {   data_type     => "varchar2",
+        default_value => \"USER",
+        is_nullable   => 0,
+        size          => 20,
+    },
+    "modified_by",
+    {   data_type     => "varchar2",
+        default_value => \"USER",
+        is_nullable   => 0,
+        size          => 20,
+    },
 
-__PACKAGE__->load_namespaces(
-    result_namespace => [ '+Bio::Chado::Schema::Result', 'Result' ] );
+);
 
 1;    # Magic true value required at end of module
 

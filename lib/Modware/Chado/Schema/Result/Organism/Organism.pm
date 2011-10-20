@@ -1,17 +1,16 @@
-package Modware::Chado::Schema;
+package Modware::Chado::Schema::Result::Organism::Organism;
 
-use warnings;
 use strict;
-use base qw/DBIx::Class::Schema/;
 
 # Other modules:
+use base qw/Bio::Chado::Schema::Result::Organism::Organism/;
 
 # Module implementation
 #
-our $VERSION = '0.08002';
+__PACKAGE__->table('organism');
+__PACKAGE__->add_column('_comment');
+__PACKAGE__->remove_column('comment');
 
-__PACKAGE__->load_namespaces(
-    result_namespace => [ '+Bio::Chado::Schema::Result', 'Result' ] );
 
 1;    # Magic true value required at end of module
 

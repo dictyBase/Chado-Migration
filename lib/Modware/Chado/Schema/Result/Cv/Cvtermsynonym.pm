@@ -1,17 +1,17 @@
-package Modware::Chado::Schema;
+package Modware::Chado::Schema::Result::Cv::Cvtermsynonym;
 
-use warnings;
 use strict;
-use base qw/DBIx::Class::Schema/;
 
 # Other modules:
+use base qw/Bio::Chado::Schema::Result::Cv::Cvtermsynonym/;
 
 # Module implementation
 #
-our $VERSION = '0.08002';
-
-__PACKAGE__->load_namespaces(
-    result_namespace => [ '+Bio::Chado::Schema::Result', 'Result' ] );
+__PACKAGE__->table('feature');
+__PACKAGE__->table("cvtermsynonym");
+__PACKAGE__->remove_column('synonym');
+__PACKAGE__->add_column( 'synonym_',
+    { data_type => "varchar2", is_nullable => 0, size => 1024 } );
 
 1;    # Magic true value required at end of module
 
