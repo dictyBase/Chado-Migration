@@ -1,0 +1,15 @@
+
+package Modware::Chado::Schema::Result::Organism::Organism;
+
+use strict;
+use parent qw/Bio::Chado::Schema::Organism::Organism/;
+
+__PACKAGE__->load_components(qw/Helper::Row::Subclass Core/);
+__PACKAGE__->subclass;
+__PACKAGE__->remove_column('comment');
+__PACKAGE__->add_column( '_comment',
+    { data_type => "clob", default_value => \"NULL", is_nullable => 1 },
+);
+
+1;
+

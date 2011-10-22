@@ -10,8 +10,7 @@ use base qw/DBIx::Class::Schema/;
 #
 our $VERSION = '0.08002';
 
-__PACKAGE__->load_namespaces(
-    result_namespace => [ '+Bio::Chado::Schema::Result', 'Result' ] );
+__PACKAGE__->load_namespaces();
 
 1;    # Magic true value required at end of module
 
