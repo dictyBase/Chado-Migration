@@ -124,6 +124,8 @@ VERSION:
 
 sub ACTION_init {
     my ($self) = @_;
+    $self->dbd;
+    $self->_setup;
     my $version
         = $self->args('version')
         ? $self->args('version')
@@ -326,59 +328,6 @@ sub ACTION_create_db {
 }
 
 sub ACTION_drop_db {
-}
-
-sub dbd {
-    my ($self) = @_;
-    if ( $self->args('dsn') ) {
-        my ( $schema, $driver ) = DBI->parse_dsn( $self->args('dsn') );
-        $driver = 'PostgreSQL' if $driver eq 'Pg';
-        $self->dbi_driver($driver);
-        return $driver;
-    }
-    else {
-        die "value for --dsn argument is missing\n";
-    }
-}
-
-sub _version_set {
-    my ( $self, $current_version, $new_version ) = @_;
-
-    my @version_dirs = File::Find::Rule->directory->in(
-        catdir(
-            $self->args('migration_folder'), $self->dbi_driver, 'deploy'
-        )
-    );
-
-    my $version_set;
-    if ( $current_version < $new_version ) {
-        $version_set = [
-            grep { $_ >= $current_version and $_ <= $new_version }
-                map { ( ( split /\//, $version_dirs[$_] ) )[-1] }
-                1 .. $#version_dirs
-        ];
-    }
-    else {
-        $version_set = [
-            grep { $_ <= $current_version and $_ >= $new_version }
-                map { ( ( split /\//, $version_dirs[$_] ) )[-1] }
-                1 .. $#version_dirs
-        ];
-    }
-    return $version_set;
-}
-
-sub _clean_phylonode {
-    my ( $self, $schema ) = @_;
-    my $table = $schema->get_table('phylonode');
-    return if !$table;
-    for my $cons ( grep { $_->name eq 'phylonode_fk_phylotree_id' }
-        @{ $table->fkey_constraints } )
-    {
-        $table->drop_constraint($cons)
-            if $cons->reference_table eq 'phylonode';
-        last;
-    }
 }
 
 sub _chado_version_in_db {
@@ -590,6 +539,60 @@ sub _setup {
     $self->schema($schema);
     $self->deploy_handler($dh);
 }
+
+sub dbd {
+    my ($self) = @_;
+    if ( $self->args('dsn') ) {
+        my ( $schema, $driver ) = DBI->parse_dsn( $self->args('dsn') );
+        $driver = 'PostgreSQL' if $driver eq 'Pg';
+        $self->dbi_driver($driver);
+        return $driver;
+    }
+    else {
+        die "value for --dsn argument is missing\n";
+    }
+}
+
+sub _version_set {
+    my ( $self, $current_version, $new_version ) = @_;
+
+    my @version_dirs = File::Find::Rule->directory->in(
+        catdir(
+            $self->args('migration_folder'), $self->dbi_driver, 'deploy'
+        )
+    );
+
+    my $version_set;
+    if ( $current_version < $new_version ) {
+        $version_set = [
+            grep { $_ >= $current_version and $_ <= $new_version }
+                map { ( ( split /\//, $version_dirs[$_] ) )[-1] }
+                1 .. $#version_dirs
+        ];
+    }
+    else {
+        $version_set = [
+            grep { $_ <= $current_version and $_ >= $new_version }
+                map { ( ( split /\//, $version_dirs[$_] ) )[-1] }
+                1 .. $#version_dirs
+        ];
+    }
+    return $version_set;
+}
+
+sub _clean_phylonode {
+    my ( $self, $schema ) = @_;
+    my $table = $schema->get_table('phylonode');
+    return if !$table;
+    for my $cons ( grep { $_->name eq 'phylonode_fk_phylotree_id' }
+        @{ $table->fkey_constraints } )
+    {
+        $table->drop_constraint($cons)
+            if $cons->reference_table eq 'phylonode';
+        last;
+    }
+}
+
 
 before [qw/_setup ACTION_install_version ACTION_migrate/] => sub {
     my ($self) = @_;

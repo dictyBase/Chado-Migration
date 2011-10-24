@@ -1,4 +1,4 @@
-package SQL::Translator::Producer::OraclePlus;
+package SQL::Translator::Producer::Oracle;
 
 # -------------------------------------------------------------------
 # Copyright (C) 2002-2009 SQLFairy Authors

@@ -12,7 +12,7 @@ extends 'DBIx::Class::DeploymentHandler::Dad';
 with 'DBIx::Class::DeploymentHandler::WithApplicatorDumple' => {
     interface_role => 'DBIx::Class::DeploymentHandler::HandlesDeploy',
     class_name =>
-        'DBIx::Class::DeploymentHandler::DeployMethod::SQL::Translator',
+        'Modware::Chado::Migration::DeployMethod::SQL::Translator',
     delegate_name        => 'deploy_method',
     attributes_to_assume => [qw(schema schema_version)],
     attributes_to_copy   => [
@@ -102,6 +102,8 @@ override 'upgrade' => sub {
     }
     log_warn {'no need to run upgrade'} unless $ran_once;
 };
+
+
 
 # the following is just a hack so that ->version_storage
 # won't be lazy
