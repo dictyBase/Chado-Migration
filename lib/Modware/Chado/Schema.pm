@@ -8,7 +8,7 @@ use base qw/DBIx::Class::Schema/;
 
 # Module implementation
 #
-our $VERSION = '0.08002';
+our $VERSION = '0.058';
 
 __PACKAGE__->load_namespaces();
 

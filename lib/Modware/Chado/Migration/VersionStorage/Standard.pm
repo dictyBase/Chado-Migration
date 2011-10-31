@@ -14,9 +14,9 @@ extends 'DBIx::Class::DeploymentHandler::VersionStorage::Standard';
 #
 
 has 'schema_moniker' => (
-	is => 'rw', 
-	isa => 'Str', 
-	lazy_build => 1
+    is         => 'rw',
+    isa        => 'Str',
+    lazy_build => 1
 );
 
 has 'schema_cvterm' => (
@@ -39,10 +39,10 @@ sub _build_version_rs {
 }
 
 sub _build_schema_moniker {
-	my ($self) = @_;
-	my $name = ref ($self->schema);
-	$name =~ s/::/-/g;
-	return lc $name;
+    my ($self) = @_;
+    my $name = ref( $self->schema );
+    $name =~ s/::/-/g;
+    return lc $name;
 }
 
 sub add_database_version {
@@ -51,46 +51,60 @@ sub add_database_version {
 
     ## -- need to refactor this later on
     my $version_rs = $self->version_rs;
-    my $row = $version_rs->search( { 'type_id' => $self->chado_cvterm->cvterm_id },
-        { rows => 1 } )->single;
+    my $row
+        = $version_rs->search(
+        { 'type_id' => $self->chado_cvterm->cvterm_id },
+        { rows      => 1 } )->single;
     if ($row) {    ## update
         $row->update( { value => $arg->{chado_version} } );
         log_info {"updated chado $arg->{chado_version} in the database"};
     }
     else {
         $version_rs->create(
-            { value => $arg->{chado_version}, type_id => $self->chado_cvterm->cvterm_id } );
+            {   value   => $arg->{chado_version},
+                type_id => $self->chado_cvterm->cvterm_id
+            }
+        );
         log_info {"added $arg->{chado_version} chado version in the database"};
     }
 
-	my $row2 = $version_rs->search( { 'type_id' => $self->schema_cvterm->cvterm_id },
-        { rows => 1 } )->single;
+    my $row2
+        = $version_rs->search(
+        { 'type_id' => $self->schema_cvterm->cvterm_id },
+        { rows      => 1 } )->single;
     if ($row2) {    ## update
         $row2->update( { value => $arg->{schema_version} } );
-        log_info {"updated schema $arg->{schema_version} version in the database"};
+        log_info {
+            "updated schema $arg->{schema_version} version in the database"
+        };
     }
     else {
         $version_rs->create(
-            { value => $arg->{schema_version}, type_id => $self->schema_cvterm->cvterm_id } );
-        log_info {"added $arg->{schema_version} schema version in the database"};
+            {   value   => $arg->{schema_version},
+                type_id => $self->schema_cvterm->cvterm_id
+            }
+        );
+        log_info {
+            "added $arg->{schema_version} schema version in the database"
+        };
     }
 }
 
 sub delete_database_version {
-    my ( $self ) = @_;
+    my ($self) = @_;
     $self->_set_version_cvterm;
     $self->version_rs->search( { type_id => $self->chado_cvterm->cvterm_id } )
         ->delete;
-    $self->version_rs->search( { type_id => $self->schema_cvterm->cvterm_id } )
-        ->delete;
+    $self->version_rs->search(
+        { type_id => $self->schema_cvterm->cvterm_id } )->delete;
     log_info {"deleted current version from database"};
 }
 
 sub _set_version_cvterms {
-    my ( $self ) = @_;
+    my ($self) = @_;
     my $schema = $self->schema;
     if ( !$self->has_chado_cvterm ) {
-        my $row    = $schema->resultset('Cv::Cvterm')->search(
+        my $row = $schema->resultset('Cv::Cvterm')->search(
             {   'cv.name' => 'chado_properties',
                 'me.name' => 'version'
             },
@@ -98,25 +112,25 @@ sub _set_version_cvterms {
         )->single;
         if ( !$row ) {    ## -- need to create the cvterm
             $row = $self->schema->resultset('Cv::Cvterm')->create(
-                {   'name'       => 'version',
-                    'definition' => 'Chado Schema version',
-                    'cv_id'      => $schema->resultset('Cv::Cv')
+                {   'name'     => 'version',
+                    definition => 'Chado Schema version',
+                    'cv_id'    => $schema->resultset('Cv::Cv')
                         ->find_or_create( { 'name' => 'chado_properties' } )
                         ->cv_id,
                     'dbxref' => {
                         'accession' => 'chado_properties:version',
                         'db_id'     => $schema->resultset('General::Db')
                             ->find_or_create( { name => 'null' } )->db_id
-                    }
+                    },
                 }
             );
         }
-        $self->chado_cvterm( $row );
+        $self->chado_cvterm($row);
     }
 
     if ( !$self->has_schema_cvterm ) {
-    	my $schema_term = 'version_'.$self->schema_moniker;
-        my $row    = $schema->resultset('Cv::Cvterm')->search(
+        my $schema_term = 'version_' . $self->schema_moniker;
+        my $row         = $schema->resultset('Cv::Cvterm')->search(
             {   'cv.name' => 'chado_properties',
                 'me.name' => $schema_term
             },
@@ -124,20 +138,20 @@ sub _set_version_cvterms {
         )->single;
         if ( !$row ) {    ## -- need to create the cvterm
             $row = $self->schema->resultset('Cv::Cvterm')->create(
-                {   'name'       => $schema_term,
-                    'definition' => 'Chado Schema version',
-                    'cv_id'      => $schema->resultset('Cv::Cv')
+                {   'name'  => $schema_term,
+                    definition => 'Chado Schema version',
+                    'cv_id' => $schema->resultset('Cv::Cv')
                         ->find_or_create( { 'name' => 'chado_properties' } )
                         ->cv_id,
                     'dbxref' => {
-                        'accession' => 'chado_properties:'.$schema_term,
+                        'accession' => 'chado_properties:' . $schema_term,
                         'db_id'     => $schema->resultset('General::Db')
                             ->find_or_create( { name => 'null' } )->db_id
                     }
                 }
             );
         }
-        $self->schema_cvterm( $row );
+        $self->schema_cvterm($row);
     }
 }
 

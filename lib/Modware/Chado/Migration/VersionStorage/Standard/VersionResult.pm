@@ -34,7 +34,7 @@ __PACKAGE__->resultset_class('Modware::Chado::Migration::VersionStorage::Standar
 
 __PACKAGE__->belongs_to(
   "type",
-  "Bio::Chado::Schema::Result::Cv::Cvterm",
+  "Modware::Chado::Schema::Result::Cv::Cvterm",
   { cvterm_id => "type_id" },
   {
     cascade_copy   => 0,

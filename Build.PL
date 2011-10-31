@@ -21,6 +21,7 @@ my %module_build_args = (
     },
     'recursive_test_files' => 1,
     'build_requires'       => {
+    	'DBIx::Class' => '0.08127', 
         'DBIx::Class::DeploymentHandler' => '0.001005',
         'HTTP::Tiny'                     => '0.013',
         'IPC::Cmd'                       => '0.46',
