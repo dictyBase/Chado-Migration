@@ -513,13 +513,7 @@ sub _run_patch_file {
     }
 
     if ( reftype($subroutine) eq 'CODE' ) {
-        try {
-            $self->_run_code( $file, $subroutine );
-    		$self->logger->info( ' .. done running ' . $file->stringify );
-        }
-        catch {
-            $self->logger->error("Unable to run code $_");
-        };
+        $self->_run_code( $file, $subroutine );
     }
     else {
         warn "got ", reftype $subroutine, " from the $file\n";
@@ -535,12 +529,19 @@ sub _run_code {
     $self->logger->info('     ....................................... ');
     $self->dbd;
     $self->_setup if !$self->deploy_handler;
-    $coderef->(
-        $self->deploy_handler,
-        Path::Class::Dir->new( $self->args('data_dir') ),
-        $self->logger
-    );
-    $self->logger->info('     ....................................... ');
+    eval {
+        $coderef->(
+            $self->deploy_handler,
+            Path::Class::Dir->new( $self->args('data_dir') ),
+            $self->logger
+        );
+        $self->logger->info( ' .. done running ' . $file->stringify );
+        $self->logger->info('     ....................................... ');
+    };
+    if ($@) {
+        $self->logger->error("Unable to run code $@");
+        die;
+    }
 }
 
 sub _release {
@@ -556,9 +557,11 @@ sub _release {
 sub _setup {
     my ($self) = @_;
     my $schema_class = $self->args('schema_class');
+    my $attrs
+        = $self->dbi_driver eq 'Oracle' ? { 'LongReadLen' => 2**25 } : {};
     my $schema
         = $schema_class->connect( $self->args('dsn'), $self->args('user'),
-        $self->args('password') );
+        $self->args('password'), $attrs );
     my $dh = Modware::Chado::Migration->new(
         {   schema              => $schema,
             databases           => $self->dbi_driver,
