@@ -2,6 +2,7 @@ package Modware::Chado::Migration::Build;
 
 use warnings;
 use strict;
+use Tie::Cache;
 use namespace::autoclean;
 use Carp;
 use Try::Tiny;
@@ -559,9 +560,17 @@ sub _setup {
     my $schema_class = $self->args('schema_class');
     my $attrs
         = $self->dbi_driver eq 'Oracle' ? { 'LongReadLen' => 2**25 } : {};
-    my $schema
-        = $schema_class->connect( $self->args('dsn'), $self->args('user'),
-        $self->args('password'), $attrs );
+    my $schema = $schema_class->connect(
+        $self->args('dsn'),
+        $self->args('user'),
+        $self->args('password'),
+        $attrs,
+        {   on_connect_do => sub {
+                my ($dbi) = @_;
+                tie %{ $dbi->_dbh->{CachedKids} }, 'Tie::Cache', 50;
+                }
+        }
+    );
     my $dh = Modware::Chado::Migration->new(
         {   schema              => $schema,
             databases           => $self->dbi_driver,
