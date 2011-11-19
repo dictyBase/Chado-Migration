@@ -32,13 +32,13 @@
     GENE:
         while ( my $row = $gene_rs->next ) {
             my $floc  = $row->featureloc_features;
-            my $start = $floc->first->fmin;
+            my $start = $floc->first->fmin + 1;
             my $end   = $floc->first->fmax;
             my $rs    = $floc->search_related(
                 'srcfeature',
                 {},
                 {   select =>
-                        [ \"SUBSTR(srcfeature.residues, $start + 1, $end)" ],
+                        [ \"SUBSTR(srcfeature.residues, $start , $end)" ],
                     as => 'fseq'
                 }
             );
@@ -46,13 +46,13 @@
             $row->update(
                 {   residues    => $sequence,
                     md5checksum => md5_hex($sequence),
-                    seqlen      => ( $end - $start )
+                    seqlen      => ( $end - $start + 1)
                 }
             );
 
             $log->info( 'added sequence of gene ' . $row->uniquename );
         }
-        $log->info( 'added sequences for all ', $gene_rs->count, ' genes' );
+        $log->info( 'added sequences for all ' . $gene_rs->count . ' genes' );
 
         my $trans_rs
             = $schema->resultset('Organism::Organism')
@@ -88,13 +88,15 @@
 
             my $sequence = '';
             for my $erow (@exons) {
-                my $floc = $erow->featureloc_features;
+                my $floc  = $erow->featureloc_features;
+                my $start = $floc->first->fmin + 1;
+                my $end   = $floc->first->fmax;
                 $sequence .= $floc->search_related(
                     'srcfeature',
                     {},
                     {   select => [
-                            \"SUBSTR(srcfeature.residues, $floc->first->fmin + 1,
-                            $floc->first->fmax)"
+                            \"SUBSTR(srcfeature.residues, $start,
+                            $end)"
                         ],
                         as => 'fseq'
                     }
