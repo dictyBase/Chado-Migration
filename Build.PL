@@ -31,7 +31,8 @@ my %module_build_args = (
         'App::cpanminus'                 => '1.4008',
         'Bio::Chado::Schema'             => '0.09000',
         'Path::Class'                    => '0.24',
-        'local::lib'                     => '1.008004'
+        'local::lib'                     => '1.008004', 
+        'Tie::Cache' => ''
     },
     'script_files' => [],
     get_options    => {
