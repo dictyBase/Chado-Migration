@@ -36,5 +36,5 @@
 		        return $rows;
 			}
 		);
-		$logger->info("polished terminator character from $rows polypeptide record");
+		$logger->info("polished terminator character from $rows polypeptide records");
     }
