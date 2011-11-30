@@ -17,7 +17,8 @@ my %module_build_args = (
     'recommends'   => {
         'DBD::SQLite'      => '1.33',
         'App::pmuninstall' => '0.24',
-        'Carton'           => ''
+        'Carton'           => '', 
+        'Bio::Perl' => '1.6.901'
     },
     'recursive_test_files' => 1,
     'build_requires'       => {
