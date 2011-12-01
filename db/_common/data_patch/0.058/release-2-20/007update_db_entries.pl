@@ -44,6 +44,11 @@
                 'urlprefix' =>
                     'http://genome.jgi-psf.org/cgi-bin/dispGeneModel?db=Dicpu1&id=',
                 'url' => 'http://genome.jgi-psf.org'
+            }, 
+            'dictyBaseDP' => {
+            	'description' => 'Database for D.discoideum related genomes', 
+            	'urlprefix' => 'http://genomes.dictybase.org/id/', 
+            	'url' => 'http://genomes.dictybase.org'
             }
         };
 
