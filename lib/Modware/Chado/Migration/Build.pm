@@ -411,13 +411,14 @@ sub ACTION_add_patch {
     use strict;
 
     sub {
-    	my ($dh, $dir, $logger) = @_;
+    	my ($dh, $dir, $logger, $release) = @_;
     	# - $dh: Modware::Chado::Migration deployment handler object
     	#       call $dh->schema to get Bio::Chado::Schema object
     	# ** make sure you use transaction for writing to database
 
     	# - $dir: A Path::Class::Dir object representing the data folder. 
     	# - $logger: A Log::Contextual::WarnLogger object.
+    	# - $release: The release no under which the code is going to run.
 
     	## -- patch code below
 
@@ -534,7 +535,8 @@ sub _run_code {
         $coderef->(
             $self->deploy_handler,
             Path::Class::Dir->new( $self->args('data_dir') ),
-            $self->logger
+            $self->logger, 
+            $self->args('release')
         );
         $self->logger->info( ' .. done running ' . $file->stringify );
         $self->logger->info('     ....................................... ');
