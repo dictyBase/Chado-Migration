@@ -17,12 +17,12 @@ my %module_build_args = (
     'recommends'   => {
         'DBD::SQLite'      => '1.33',
         'App::pmuninstall' => '0.24',
-        'Carton'           => '', 
-        'Bio::Perl' => '1.006901'
+        'Carton'           => '',
+        'Bio::Root::RootI'        => '1.006901'
     },
     'recursive_test_files' => 1,
     'build_requires'       => {
-    	'DBIx::Class' => '0.08127', 
+        'DBIx::Class'                    => '0.08127',
         'DBIx::Class::DeploymentHandler' => '0.001005',
         'HTTP::Tiny'                     => '0.013',
         'IPC::Cmd'                       => '0.46',
@@ -32,8 +32,8 @@ my %module_build_args = (
         'App::cpanminus'                 => '1.4008',
         'Bio::Chado::Schema'             => '0.09000',
         'Path::Class'                    => '0.24',
-        'local::lib'                     => '1.008004', 
-        'Tie::Cache' => ''
+        'local::lib'                     => '1.008004',
+        'Tie::Cache'                     => ''
     },
     'script_files' => [],
     get_options    => {
