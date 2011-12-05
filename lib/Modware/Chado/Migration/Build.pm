@@ -23,6 +23,7 @@ use Modware::Chado::Schema;
 use Modware::Chado::Migration::VersionStorage::Standard;
 use Path::Class;
 use Log::Contextual::WarnLogger;
+use Time::Piece;
 
 extends 'Module::Build';
 
@@ -532,13 +533,15 @@ sub _run_code {
     $self->dbd;
     $self->_setup if !$self->deploy_handler;
     eval {
+        my $start_time = Time::Piece->new;
         $coderef->(
             $self->deploy_handler,
             Path::Class::Dir->new( $self->args('data_dir') ),
-            $self->logger, 
-            $self->args('release')
+            $self->logger, $self->args('release')
         );
+        my $elapsed = Time::Piece->new - $start_time;
         $self->logger->info( ' .. done running ' . $file->stringify );
+        $self->logger->info( 'Took [' . $elapsed->minutes . ' min] to run' );
         $self->logger->info('     ....................................... ');
     };
     if ($@) {
