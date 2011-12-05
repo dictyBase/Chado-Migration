@@ -2,7 +2,7 @@
     use strict;
 
     sub {
-        my ( $dh, $dir, $logger ) = @_;
+        my ($dh, $dir, $logger ) = @_;
 
         # - $dh: Modware::Chado::Migration deployment handler object
         #       call $dh->schema to get Bio::Chado::Schema object
@@ -76,7 +76,5 @@
                 $logger->info("created $db entry");
             }
         }
-
         $guard->commit;
-
     };

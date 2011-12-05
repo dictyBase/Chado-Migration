@@ -32,12 +32,12 @@
 	   	 status => 'Unpublished'
 	   );
 	   $pub->add_author(Modware::Publication::Author->new(
-	   	initials => $_->[0], 
+	   	first_name => $_->[0], 
 	   	last_name => $_->[1]
 	   )) for @authors;
 
 	   my $pub_in_db = $pub->create;
 
-	   $logger->info("loaded unpublished article with id ",  $pub_in_db->id);
+	   $logger->info("loaded unpublished article with id ".  $pub_in_db->id);
 
     }
