@@ -18,7 +18,7 @@ my %module_build_args = (
         'DBD::SQLite'      => '1.33',
         'App::pmuninstall' => '0.24',
         'Carton'           => '',
-        'Bio::Root::RootI'        => '1.006901'
+        'Bio::Root::RootI' => '1.006901'
     },
     'recursive_test_files' => 1,
     'build_requires'       => {
@@ -33,7 +33,7 @@ my %module_build_args = (
         'Bio::Chado::Schema'             => '0.09000',
         'Path::Class'                    => '0.24',
         'local::lib'                     => '1.008004',
-        'Tie::Cache'                     => ''
+        'Tie::Cache'                     => '',
     },
     'script_files' => [],
     get_options    => {
