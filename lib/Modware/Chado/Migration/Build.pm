@@ -541,7 +541,10 @@ sub _run_code {
         );
         my $elapsed = Time::Piece->new - $start_time;
         $self->logger->info( ' .. done running ' . $file->stringify );
-        $self->logger->info( 'Took [' . $elapsed->minutes . ' min] to run' );
+        $self->logger->info( 'Took ['
+                . $elapsed->minutes . ' min '
+                . $elapsed->seconds
+                . ' seconds ] to run' );
         $self->logger->info('     ....................................... ');
     };
     if ($@) {

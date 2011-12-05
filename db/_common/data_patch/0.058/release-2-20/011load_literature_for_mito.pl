@@ -37,7 +37,6 @@
 	   )) for @authors;
 
 	   my $pub_in_db = $pub->create;
-
 	   $logger->info("loaded unpublished article with id ".  $pub_in_db->id);
 
     }
