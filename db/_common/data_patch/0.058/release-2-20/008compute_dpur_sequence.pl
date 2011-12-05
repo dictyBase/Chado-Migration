@@ -50,7 +50,7 @@
                 }
             );
 
-            $log->info( 'added sequence of gene ' . $row->uniquename );
+            $log->debug( 'added sequence of gene ' . $row->uniquename );
         }
         $log->info( 'added sequences for all ' . $gene_rs->count . ' genes' );
 
