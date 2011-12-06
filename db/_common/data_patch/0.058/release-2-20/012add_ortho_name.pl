@@ -32,6 +32,7 @@
         # -- code below run under a transaction
         my $guard = $schema->txn_scope_guard;
 
+	    my $commit_threshold = 2000;
         my $featureprops;
         while ( my $line = $input->getline ) {
             chomp $line;
@@ -47,39 +48,31 @@
                 my @products = split /|/, $name;
                 for my $i ( 0 .. $#products ) {
                     push @$featureprops,
-                        {
-                        feature_id => $row->feature_id,
-                        value      => $products[$i],
-                        type_id    => $type_id,
-                        rank       => $i
-                        };
+                        [ $row->feature_id, $products[$i], $type_id, $i ];
                 }
             }
             else {
-                push @$featureprops,
-                    {
-                    feature_id => $row->feature_id,
-                    value      => $name,
-                    type_id    => $type_id
-                    };
+                push @$featureprops, [ $row->feature_id, $name, $type_id, 0 ];
             }
 
-            if ( @$featureprops and @$featureprops == 2000 ) {
+            if ( @$featureprops >= $commit_threshold ) {
                 unshift @$featureprops, [qw/feature_id value type_id rank/];
+                $logger->info("going to load $commit_threshold entries");
                 $schema->resultset('Sequence::Featureprop')
                     ->populate($featureprops);
-                $logger->info("loaded product name for 2000 records");
+                $logger->info("loaded product name for $commit_threshold records");
                 undef $featureprops;
             }
 
         }
 
-        if (@$featureprops) {
+        if (defined @$featureprops) {
             unshift @$featureprops, [qw/feature_id value type_id rank/];
+            $logger->info("going to load rest of the entries");
             $schema->resultset('Sequence::Featureprop')
                 ->populate($featureprops);
-            $log->info(
-                "loaded rest of " . @$featureprops . " product name" );
+            $logger->info(
+                "loaded rest of " . scalar @$featureprops . " product name" );
         }
         $guard->commit;
         }
