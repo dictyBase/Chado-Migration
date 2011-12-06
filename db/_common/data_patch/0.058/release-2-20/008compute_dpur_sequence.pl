@@ -114,7 +114,7 @@
                 }
             );
 
-            $log->info( 'added sequence for transcript ' . $row->uniquename );
+            $log->debug( 'added sequence for transcript ' . $row->uniquename );
         }
         $log->info(
             'added sequence for ' . $trans_rs->count . ' transcripts' );
