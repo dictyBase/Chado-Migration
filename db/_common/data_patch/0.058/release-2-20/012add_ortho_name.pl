@@ -44,8 +44,8 @@
                 $logger->warn("cannot find $id in the database");
                 next;
             }
-            if ( $name =~ /|/ ) {
-                my @products = split /|/, $name;
+            if ( $name =~ /\|/ ) {
+                my @products = split /\|/, $name;
                 for my $i ( 0 .. $#products ) {
                     push @$featureprops,
                         [ $row->feature_id, $products[$i], $type_id, $i ];
