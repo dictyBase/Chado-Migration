@@ -46,7 +46,7 @@
             $row->update(
                 {   residues    => $sequence,
                     md5checksum => md5_hex($sequence),
-                    seqlen      => ( $end - $start + 1)
+                    seqlen      => ( $end - $start + 1 )
                 }
             );
 
@@ -75,7 +75,9 @@
                 {   join     => 'type',
                     prefetch => 'featureloc_features'
                 }
-                )->all;
+                )
+                ->search_related( 'featureloc_features', {},
+                { order_by => { -asc => 'fmin' } } );
 
             if ( !@exons ) {
                 $log->warn(
@@ -86,17 +88,17 @@
                 );
             }
 
-            my $sequence = '';
-            for my $erow (@exons) {
-                my $floc  = $erow->featureloc_features;
-                my $start = $floc->first->fmin + 1;
-                my $end   = $floc->first->fmax;
+            my $sequence;
+            for my $floc (@exons) {
+                my $start  = $floc->first->fmin + 1;
+                my $end    = $floc->first->fmax;
+                my $seqlen = $end - $start + 1;
                 $sequence .= $floc->search_related(
                     'srcfeature',
                     {},
                     {   select => [
                             \"SUBSTR(srcfeature.residues, $start,
-                            $end)"
+                            $seqlen)"
                         ],
                         as => 'fseq'
                     }
@@ -104,8 +106,8 @@
 
             }
             if ( $row->featureloc_features->first->strand == -1 ) {
-                $sequence =~ tr/ATGC/UACG/;
-                $sequence = reverse $sequence;
+                $sequence = join( '', reverse( split '', $sequence ) );
+                $sequence =~ tr/ATGC/TACG/;
             }
             $row->update(
                 {   residues    => $sequence,
@@ -114,7 +116,8 @@
                 }
             );
 
-            $log->debug( 'added sequence for transcript ' . $row->uniquename );
+            $log->debug(
+                'added sequence for transcript ' . $row->uniquename );
         }
         $log->info(
             'added sequence for ' . $trans_rs->count . ' transcripts' );
