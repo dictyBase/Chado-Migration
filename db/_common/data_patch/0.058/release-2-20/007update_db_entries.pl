@@ -49,7 +49,7 @@
             	'description' => 'Database for D.discoideum related genomes', 
             	'urlprefix' => 'http://genomes.dictybase.org/id/', 
             	'url' => 'http://genomes.dictybase.org'
-            }
+            }, 
             'genbank' => {
             	'description' => 'NIH genetic sequence database', 
             	'urlprefix' => 'http://ncbi.nlm.nih.gov/nuccore/', 
