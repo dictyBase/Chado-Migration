@@ -97,8 +97,7 @@
                     'srcfeature',
                     {},
                     {   select => [
-                            \"SUBSTR(srcfeature.residues, $start,
-                            $seqlen)"
+                            \"SUBSTR(residues, $start,$seqlen)"
                         ],
                         as => 'fseq'
                     }
