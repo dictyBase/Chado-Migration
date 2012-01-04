@@ -90,8 +90,8 @@
 
             my $sequence;
             for my $floc (@exons) {
-                my $start  = $floc->first->fmin + 1;
-                my $end    = $floc->first->fmax;
+                my $start  = $floc->fmin + 1;
+                my $end    = $floc->fmax;
                 my $seqlen = $end - $start + 1;
                 $sequence .= $floc->search_related(
                     'srcfeature',
