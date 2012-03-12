@@ -30,9 +30,9 @@
 
         my $rs = $schema->resultset('Sequence::Feature')->search(
             {   'organism.common_name'              => 'purpureum',
-                'featureloc_features.srcfeature_id' => undef
+                'type.name' => 'supercontig'
             },
-            {   join       => [qw/organism featureloc_features/]
+            {   join       => [qw/organism type/]
             }
         );
 
