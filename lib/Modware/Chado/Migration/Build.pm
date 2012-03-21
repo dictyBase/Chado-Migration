@@ -477,6 +477,16 @@ sub ACTION_set_release {
     $self->args( 'release', $arr->[0] );
 }
 
+sub ACTION_create_data_folder {
+	my ($self) = @_;
+	my $arr = $self->args('ARGV');
+	my $name = $arr->[0] ? $arr->[0]: 'data';
+	my $release = $self->_release;
+
+	my $folder = catdir($self->base_dir, $name);
+	make_path $folder;
+}
+
 sub _patch_folder {
     my ($self) = @_;
     $self->dbd    if !$self->dbi_driver;
