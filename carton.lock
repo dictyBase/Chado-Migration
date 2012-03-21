@@ -29963,6 +29963,50 @@
          },
          "version" : "0.03"
       },
+      "Time::Piece" : {
+         "dist" : "Time-Piece-1.20",
+         "module" : "Time::Piece",
+         "mymeta" : {
+            "abstract" : "Object Oriented time objects",
+            "author" : [
+               "Matt Sergeant"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.42, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Time-Piece",
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "version" : "1.20"
+         },
+         "name" : "Time::Piece",
+         "pathname" : "M/MS/MSERGEANT/Time-Piece-1.20.tar.gz",
+         "provides" : {
+            "Time::Piece" : {
+               "file" : "Time/Piece.pm",
+               "version" : "1.20"
+            },
+            "Time::Seconds" : {
+               "file" : "Time/Seconds.pm"
+            }
+         },
+         "version" : "1.20"
+      },
       "Tree::DAG_Node" : {
          "dist" : "Tree-DAG_Node-1.06",
          "module" : "Tree::DAG_Node",
