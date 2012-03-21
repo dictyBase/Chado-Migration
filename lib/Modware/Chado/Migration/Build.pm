@@ -483,7 +483,7 @@ sub ACTION_create_data_folder {
 	my $name = $arr->[0] ? $arr->[0]: 'data';
 	my $release = $self->_release;
 
-	my $folder = catdir($self->base_dir, $name);
+	my $folder = catdir($self->base_dir, $name, $release);
 	make_path $folder;
 }
 
