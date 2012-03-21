@@ -18,7 +18,8 @@ my %module_build_args = (
         'DBD::SQLite'      => '1.33',
         'App::pmuninstall' => '0.24',
         'Carton'           => '',
-        'Bio::Root::RootI' => '1.006901'
+        'Bio::Root::RootI' => '1.006901', 
+        'DBD::Oracle' => '1.27'
     },
     'recursive_test_files' => 1,
     'build_requires'       => {
