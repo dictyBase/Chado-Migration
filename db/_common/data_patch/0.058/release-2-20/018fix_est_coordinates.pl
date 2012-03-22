@@ -1,6 +1,5 @@
     ## -- patch script created by Modware::Chado::Migration module
     use strict;
-    use Carp::Always;
 
     sub {
         my ( $dh, $dir, $logger, $release ) = @_;
