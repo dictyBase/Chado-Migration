@@ -22671,6 +22671,152 @@
          },
          "version" : "0.06"
       },
+      "Math::Base36" : {
+         "dist" : "Math-Base36-0.09",
+         "module" : "Math::Base36",
+         "mymeta" : {
+            "abstract" : "Encoding and decoding of base36 strings",
+            "author" : [
+               "Rune Henssel <perl@henssel.dk>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Math-Base36",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42",
+                     "Test::More" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Math::BigInt" : "1.60",
+                     "perl" : "5.006"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ],
+               "repository" : {
+                  "url" : "http://github.com/bricas/math-base36"
+               }
+            },
+            "version" : "0.09"
+         },
+         "name" : "Math::Base36",
+         "pathname" : "B/BR/BRICAS/Math-Base36-0.09.tar.gz",
+         "provides" : {
+            "Math::Base36" : {
+               "file" : "Math/Base36.pm",
+               "version" : "0.09"
+            }
+         },
+         "version" : "0.09"
+      },
+      "Math::BigInt" : {
+         "dist" : "Math-BigInt-1.99",
+         "module" : "http://cpan.metacpan.org/authors/id/F/FL/FLORA/Math-BigInt-1.99.tar.gz",
+         "mymeta" : {
+            "abstract" : "Arbitrary size integer/float math package",
+            "author" : [
+               "Original code by Mark Biggar, overloaded interface by Ilya Zakharevich.",
+               "Tels <nospam-abuse@bloodgate.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Math-BigInt",
+            "no_index" : {
+               "directory" : [
+                  "examples",
+                  "inc",
+                  "t"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42",
+                     "Test::More" : "0.62"
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42"
+                  }
+               },
+               "runtime" : {
+                  "recommends" : {
+                     "Math::BigInt::FastCalc" : "0.24",
+                     "Math::BigInt::GMP" : "1.24",
+                     "Math::BigInt::Pari" : "1.13",
+                     "Math::BigRat" : "0.22",
+                     "bignum" : "0.22"
+                  },
+                  "requires" : {
+                     "perl" : "5.006002"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ]
+            },
+            "version" : "1.99"
+         },
+         "name" : "Math::BigInt",
+         "pathname" : "http:/cpan.metacpan.org/authors/id/F/FL/FLORA/Math-BigInt-1.99.tar.gz",
+         "provides" : {
+            "Math::BigFloat" : {
+               "file" : "Math/BigFloat.pm",
+               "version" : "1.65"
+            },
+            "Math::BigInt" : {
+               "file" : "Math/BigInt.pm",
+               "version" : "1.99"
+            },
+            "Math::BigInt::Calc" : {
+               "file" : "Math/BigInt/Calc.pm",
+               "version" : "0.58"
+            },
+            "Math::BigInt::CalcEmu" : {
+               "file" : "Math/BigInt/CalcEmu.pm",
+               "version" : "0.07"
+            },
+            "http://cpan.metacpan.org/authors/id/F/FL/FLORA/Math-BigInt-1.99.tar.gz" : {}
+         },
+         "version" : "1.99"
+      },
       "Math::Round" : {
          "dist" : "Math-Round-0.06",
          "module" : "Math::Round",

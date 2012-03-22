@@ -19,7 +19,9 @@ my %module_build_args = (
         'App::pmuninstall' => '0.24',
         'Carton'           => '',
         'Bio::Root::RootI' => '1.006901',
-        'DBD::Oracle'      => '1.27'
+        'DBD::Oracle'      => '1.27', 
+        'Math::BigInt' => '1.99', 
+        'Math::Base36' => '0.09'
     },
     'recursive_test_files' => 1,
     'build_requires'       => {
