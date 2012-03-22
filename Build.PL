@@ -37,8 +37,9 @@ my %module_build_args = (
         'Bio::Chado::Schema'             => '0.09000',
         'Path::Class'                    => '0.24',
         'local::lib'                     => '1.008004',
-        'Tie::Cache'                     => '',
-        'Time::Piece'                    => '1.20'
+        'Tie::Cache'                     => '0.17',
+        'Time::Piece'                    => '1.20',
+        'XML::Parser'                    => '2.34'
     },
     'script_files' => [],
     get_options    => {

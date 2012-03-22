@@ -30983,6 +30983,87 @@
          },
          "version" : "0.101020"
       },
+      "XML::Parser" : {
+         "dist" : "XML-Parser-2.34",
+         "module" : "http://cpan.metacpan.org/authors/id/M/MS/MSERGEANT/XML-Parser-2.34.tar.gz",
+         "mymeta" : {
+            "abstract" : "unknown",
+            "author" : [
+               "unknown"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.59, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "XML-Parser",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "version" : "2.34"
+         },
+         "name" : "XML::Parser",
+         "pathname" : "http:/cpan.metacpan.org/authors/id/M/MS/MSERGEANT/XML-Parser-2.34.tar.gz",
+         "provides" : {
+            "XML::Parser" : {
+               "file" : "XML/Parser.pm",
+               "version" : "2.34"
+            },
+            "XML::Parser::ContentModel" : {
+               "file" : "XML/Parser/Expat.pm"
+            },
+            "XML::Parser::Encinfo" : {
+               "file" : "XML/Parser/Expat.pm"
+            },
+            "XML::Parser::Expat" : {
+               "file" : "XML/Parser/Expat.pm",
+               "version" : "2.34"
+            },
+            "XML::Parser::ExpatNB" : {
+               "file" : "XML/Parser/Expat.pm"
+            },
+            "XML::Parser::Style::Debug" : {
+               "file" : "XML/Parser/Style/Debug.pm"
+            },
+            "XML::Parser::Style::Objects" : {
+               "file" : "XML/Parser/Style/Objects.pm"
+            },
+            "XML::Parser::Style::Stream" : {
+               "file" : "XML/Parser/Style/Stream.pm"
+            },
+            "XML::Parser::Style::Subs" : {
+               "file" : "XML/Parser/Style/Subs.pm"
+            },
+            "XML::Parser::Style::Tree" : {
+               "file" : "XML/Parser/Style/Tree.pm"
+            },
+            "http://cpan.metacpan.org/authors/id/M/MS/MSERGEANT/XML-Parser-2.34.tar.gz" : {}
+         },
+         "version" : "2.34"
+      },
       "XML::Writer" : {
          "dist" : "XML-Writer-0.612",
          "module" : "XML::Writer",
