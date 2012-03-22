@@ -228,6 +228,82 @@
          },
          "version" : "0.27"
       },
+      "Archive::Tar" : {
+         "dist" : "Archive-Tar-1.84",
+         "module" : "Archive::Tar",
+         "mymeta" : {
+            "abstract" : "Manipulates TAR archives",
+            "author" : [
+               "Jos Boumans <kane[at]cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120530, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Archive-Tar",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Compress::Zlib" : "2.015",
+                     "File::Spec" : "0.82",
+                     "IO::Compress::Base" : "2.015",
+                     "IO::Compress::Bzip2" : "2.015",
+                     "IO::Compress::Gzip" : "2.015",
+                     "IO::Zlib" : "1.01",
+                     "Package::Constants" : 0,
+                     "Test::Harness" : "2.26",
+                     "Test::More" : 0,
+                     "perl" : "5.00503"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "repository" : {
+                  "url" : "https://github.com/jib/archive-tar-new"
+               }
+            },
+            "version" : "1.84"
+         },
+         "name" : "Archive::Tar",
+         "pathname" : "B/BI/BINGOS/Archive-Tar-1.84.tar.gz",
+         "provides" : {
+            "Archive::Tar" : {
+               "file" : "Archive/Tar.pm",
+               "version" : "1.84"
+            },
+            "Archive::Tar::Constant" : {
+               "file" : "Archive/Tar/Constant.pm",
+               "version" : "1.84"
+            },
+            "Archive::Tar::File" : {
+               "file" : "Archive/Tar/File.pm",
+               "version" : "1.84"
+            }
+         },
+         "version" : "1.84"
+      },
       "Attribute::Handlers" : {
          "dist" : "Attribute-Handlers-0.91",
          "module" : "Attribute::Handlers",
@@ -9736,6 +9812,110 @@
             }
          },
          "version" : "0.31"
+      },
+      "Compress::Raw::Bzip2" : {
+         "dist" : "Compress-Raw-Bzip2-2.049",
+         "module" : "Compress::Raw::Bzip2",
+         "mymeta" : {
+            "abstract" : "Low-Level Interface to bzip2 compression library",
+            "author" : [
+               "Paul Marquess <pmqs@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Compress-Raw-Bzip2",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "version" : "2.049"
+         },
+         "name" : "Compress::Raw::Bzip2",
+         "pathname" : "P/PM/PMQS/Compress-Raw-Bzip2-2.049.tar.gz",
+         "provides" : {
+            "Compress::Raw::Bzip2" : {
+               "file" : "Compress/Raw/Bzip2.pm",
+               "version" : "2.049"
+            }
+         },
+         "version" : "2.049"
+      },
+      "Compress::Raw::Zlib" : {
+         "dist" : "Compress-Raw-Zlib-2.051",
+         "module" : "Compress::Raw::Zlib",
+         "mymeta" : {
+            "abstract" : "unknown",
+            "author" : [
+               "unknown"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Compress-Raw-Zlib",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "version" : "2.051"
+         },
+         "name" : "Compress::Raw::Zlib",
+         "pathname" : "P/PM/PMQS/Compress-Raw-Zlib-2.051.tar.gz",
+         "provides" : {
+            "Compress::Raw::Zlib" : {
+               "file" : "Compress/Raw/Zlib.pm",
+               "version" : "2.051"
+            }
+         },
+         "version" : "2.051"
       },
       "Config::Any" : {
          "dist" : "Config-Any-0.23",
@@ -21200,6 +21380,175 @@
          },
          "version" : "0.12"
       },
+      "IO::Compress" : {
+         "dist" : "IO-Compress-2.049",
+         "module" : "Compress::Zlib",
+         "mymeta" : {
+            "abstract" : "IO Interface to compressed data files/buffers",
+            "author" : [
+               "Paul Marquess <pmqs@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "IO-Compress",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Compress::Raw::Bzip2" : "2.049",
+                     "Compress::Raw::Zlib" : "2.049",
+                     "Scalar::Util" : 0
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "2.049"
+         },
+         "name" : "IO::Compress",
+         "pathname" : "P/PM/PMQS/IO-Compress-2.049.tar.gz",
+         "provides" : {
+            "Compress::Zlib" : {
+               "file" : "Compress/Zlib.pm",
+               "version" : "2.049"
+            },
+            "File::GlobMapper" : {
+               "file" : "File/GlobMapper.pm",
+               "version" : "1.000"
+            },
+            "IO::Compress::Adapter::Bzip2" : {
+               "file" : "IO/Compress/Adapter/Bzip2.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Adapter::Deflate" : {
+               "file" : "IO/Compress/Adapter/Deflate.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Adapter::Identity" : {
+               "file" : "IO/Compress/Adapter/Identity.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Base" : {
+               "file" : "IO/Compress/Base.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Base::Common" : {
+               "file" : "IO/Compress/Base/Common.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Bzip2" : {
+               "file" : "IO/Compress/Bzip2.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Deflate" : {
+               "file" : "IO/Compress/Deflate.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Gzip" : {
+               "file" : "IO/Compress/Gzip.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Gzip::Constants" : {
+               "file" : "IO/Compress/Gzip/Constants.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::RawDeflate" : {
+               "file" : "IO/Compress/RawDeflate.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Zip" : {
+               "file" : "IO/Compress/Zip.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Zip::Constants" : {
+               "file" : "IO/Compress/Zip/Constants.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Zlib::Constants" : {
+               "file" : "IO/Compress/Zlib/Constants.pm",
+               "version" : "2.049"
+            },
+            "IO::Compress::Zlib::Extra" : {
+               "file" : "IO/Compress/Zlib/Extra.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::Adapter::Bunzip2" : {
+               "file" : "IO/Uncompress/Adapter/Bunzip2.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::Adapter::Identity" : {
+               "file" : "IO/Uncompress/Adapter/Identity.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::Adapter::Inflate" : {
+               "file" : "IO/Uncompress/Adapter/Inflate.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::AnyInflate" : {
+               "file" : "IO/Uncompress/AnyInflate.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::AnyUncompress" : {
+               "file" : "IO/Uncompress/AnyUncompress.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::Base" : {
+               "file" : "IO/Uncompress/Base.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::Bunzip2" : {
+               "file" : "IO/Uncompress/Bunzip2.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::Gunzip" : {
+               "file" : "IO/Uncompress/Gunzip.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::Inflate" : {
+               "file" : "IO/Uncompress/Inflate.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::RawInflate" : {
+               "file" : "IO/Uncompress/RawInflate.pm",
+               "version" : "2.049"
+            },
+            "IO::Uncompress::Unzip" : {
+               "file" : "IO/Uncompress/Unzip.pm",
+               "version" : "2.049"
+            },
+            "U64" : {
+               "file" : "IO/Compress/Base/Common.pm"
+            },
+            "Zlib::OldDeflate" : {
+               "file" : "Compress/Zlib.pm"
+            },
+            "Zlib::OldInflate" : {
+               "file" : "Compress/Zlib.pm"
+            }
+         },
+         "version" : "2.049"
+      },
       "IO::String" : {
          "dist" : "IO-String-1.08",
          "module" : "IO::String",
@@ -21337,6 +21686,49 @@
             }
          },
          "version" : "2.110"
+      },
+      "IO::Zlib" : {
+         "dist" : "IO-Zlib-1.10",
+         "module" : "IO::Zlib",
+         "mymeta" : {
+            "abstract" : "unknown",
+            "author" : [
+               "unknown"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.42, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "IO-Zlib",
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Compress::Zlib" : "2"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "1.10"
+         },
+         "name" : "IO::Zlib",
+         "pathname" : "T/TO/TOMHUGHES/IO-Zlib-1.10.tar.gz",
+         "provides" : {
+            "IO::Zlib" : {
+               "file" : "IO/Zlib.pm",
+               "version" : "1.10"
+            }
+         },
+         "version" : "1.10"
       },
       "IPC::Cmd" : {
          "dist" : "IPC-Cmd-0.72",
@@ -25442,6 +25834,51 @@
             }
          },
          "version" : "0.03"
+      },
+      "Package::Constants" : {
+         "dist" : "Package-Constants-0.02",
+         "module" : "Package::Constants",
+         "mymeta" : {
+            "abstract" : "unknown",
+            "author" : [
+               "unknown"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.30, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Package-Constants",
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Test::More" : 0
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "0.02",
+            "x_installdirs" : "site",
+            "x_version_from" : "lib/Package/Constants.pm"
+         },
+         "name" : "Package::Constants",
+         "pathname" : "K/KA/KANE/Package-Constants-0.02.tar.gz",
+         "provides" : {
+            "Package::Constants" : {
+               "file" : "Package/Constants.pm",
+               "version" : "0.02"
+            }
+         },
+         "version" : "0.02"
       },
       "Package::DeprecationManager" : {
          "dist" : "Package-DeprecationManager-0.11",
