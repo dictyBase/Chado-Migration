@@ -28,19 +28,52 @@
         }
         my $id = $pub->pub_id;
 
-        my $rs = $schema->resultset('Sequence::Feature')->search(
-            {
-                'organism.common_name' => 'fasciculatum',
-                'type.name' =>
-
-                  { 'in', [ 'gene', 'supercontig', 'contig', 'mRNA', 'tRNA' ] }
-            },
-            { join => [ 'organism', 'type' ] }
-        );
         my $stash;
-        while ( my $row = $rs->next ) {
+
+        my $supercontig_rs =
+          $schema->resultset('Organism::Organism')
+          ->search( { 'common_name' => 'fasciculatum' } )->search_related(
+            'features',
+            {
+                'type.name'   => 'supercontig',
+                'type_2.name' => 'mitochondrial_DNA'
+            },
+            { join => [ 'type', { 'featureprops' => 'type' } ] }
+          );
+
+        push @$stash, [ $supercontig_rs->first->feature_id, $id ];
+
+        my $gene_rs =
+          $supercontig_rs->search_related( 'feature_relationship_objects',
+            {}, {} )->search_related(
+            'subject',
+            { 'type_3.name' => 'gene' },
+            { join          => 'type' }
+            );
+
+        while ( my $row = $gene_rs->next ) {
             push @$stash, [ $row->feature_id, $id ];
         }
+
+        my $rna_rs =
+          $gene_rs->search_related( 'feature_relationship_objects', {}, {} )
+          ->search_related(
+            'subject',
+            { 'type_4.name' => { 'in', [ 'mRNA', 'tRNA' ] } },
+            { join => 'type' }
+          );
+
+        while ( my $row = $rna_rs->next ) {
+            push @$stash, [ $row->feature_id, $id ];
+        }
+
+        #my $poly_rs =
+        #  $rna_rs->search_related( 'feature_relationship_objects', {}, {} )
+        #  ->search_related(
+        #    'subject',
+        #    { 'type_5.name' => 'polypeptide' },
+        #    { join          => 'type' }
+        #  );
 
         my $guard = $schema->txn_scope_guard;
 
