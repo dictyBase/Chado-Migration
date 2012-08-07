@@ -17,7 +17,7 @@ git clone git://github.com/dictyBase/Chado-Migration.git
 * Alternate way
 	+ Install Carton: `cpanm Carton`
 	+ carton install
-	+ carton exec <command>
+	+ `carton exec <command>`
 	All the dependencies will be served from a local directory managed by carton. For details visit [https://metacpan.org/module/Carton](https://metacpan.org/module/Carton)
 
 #### Build
@@ -42,7 +42,7 @@ carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user <us
 * Run
 
 	```
-	./Build run_patch <patch_name> --release release-2-20
+	./Build run_patch <patch_name>.pl --release release-2-20
 	```
 	
 
