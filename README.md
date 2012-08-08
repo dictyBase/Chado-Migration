@@ -16,9 +16,17 @@ git clone git://github.com/dictyBase/Chado-Migration.git
 
 * Alternate way
 	+ Install Carton: `cpanm Carton`
-	+ carton install
+	+ `carton install`
 	+ `carton exec <command>`
 	All the dependencies will be served from a local directory managed by carton. For details visit [https://metacpan.org/module/Carton](https://metacpan.org/module/Carton)
+
+* Install Modware
+
+	```shell
+	curl -O -L -k https://github.com/downloads/dictyBase/Modware/modware-03-22-2012.tar.gz\
+	  && carton install modware-03-22-2012.tar.gz \
+	    && rm modware-03-22-2012.tar.gz
+	```
 
 #### Build
 
@@ -26,10 +34,9 @@ git clone git://github.com/dictyBase/Chado-Migration.git
 perl -Ilocal/lib/perl5 Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user '<user>' --password '<pass>' --version '0.058'
 ```
 
-OR (if you installed dependencies using Carton)
-
+Just to check if the build went fine
 ```shell
-carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user <user> --password <pass> --version '0.058'
+./Build chado_version_in_db
 ```
 
 #### Patch
@@ -38,6 +45,7 @@ carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user <us
 	```
 	./Build add_patch <patch_name>
 	```
+A template patch will be created. Add the code to the submodule using the variables already defined.
 
 * Run
 
