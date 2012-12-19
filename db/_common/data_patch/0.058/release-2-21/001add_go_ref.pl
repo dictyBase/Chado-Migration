@@ -82,6 +82,9 @@
                 }
                 next;
             }
+            elsif ( $io->eof ) {
+                push( @go_refs, $go_ref );
+            }
             my ( $id, $val ) = split( ':', $line, 2 );
             if ( $id eq 'year' && $val =~ m/\-/g ) {
                 my ( $y1, $y2 ) = split( '-', $val );
@@ -128,7 +131,6 @@
                 || isCommonSurname( $names[1] )
                 || $self->has_author($auth) )
             {
-                print $auth. "\n";
                 $ref->add_author(
                     Modware::Publication::Author->new(
                         last_name  => $names[1],
@@ -138,14 +140,13 @@
                 );
             }
 
-            #else {
-            #    my $mod_group = Modware::Publication::Author->new(
-            #        given_name => $auth,
-            #        rank       => $auth_count++
-            #   );
-            #    $ref->add_author($mod_group);
-            #next;
-            #}
+            else {
+                my $mod_group = Modware::Publication::Author->new(
+                    last_name => $auth,
+                    rank      => $auth_count++
+                );
+                $ref->add_author($mod_group);
+            }
         }
         return $ref;
     }
@@ -179,7 +180,7 @@
         $run->names( $names_path->stringify );
 
         # -- code below run under a transaction
-        my $guard = $schema->txn_scope_guard;
+        my $guard = $dh->schema->txn_scope_guard;
 
         if ( $run->names ) {
             $run->set_authors( $run->names );
