@@ -2,7 +2,6 @@
 Module for Chado database migration
 
 ### Getting Started
-
 #### Installation
 Clone the repository
 
@@ -32,33 +31,9 @@ git clone git://github.com/dictyBase/Chado-Migration.git
 #### Build
 
 ```shell
-perl -Ilocal/lib/perl5 Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user '<user>' --password '<pass>' --version '0.058'
-```
-
-Just to check if the build went fine
-```shell
-carton exec -- ./Build chado_version_in_db
-```
-If this throws an error, check if the database has `chadoprops` table. If not,
-```
-carton exec -- ./Build install_version
+carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user '<user>' --password '<pass>' --version '0.058'
 ```
 
 #### Commands
 
-1. Patch
-
-	* Add
-
-		```
-		./Build add_patch <patch_name>
-		```
-		A template patch will be created. Add the code to the submodule using the variables already defined.
-
-	* Run
-
-		```
-		./Build run_patch <patch_name>.pl --release release-2-20
-		```
-	
-
+How to use the different commands can be found in the [wiki](https://github.com/dictyBase/Chado-Migration/wiki/Using-Chado-Migration-commands)
