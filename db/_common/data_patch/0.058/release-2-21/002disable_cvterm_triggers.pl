@@ -24,7 +24,8 @@
 						triggering_event = 'UPDATE OR DELETE'
 						AND
 						table_name IN ('CV',  'CVPROP', 'CVTERM',  'CVTERM_RELATIONSHIP',
-						'DBXREF',  'DB',  'CVTERMSYNONYM')
+						'DBXREF',  'DB',  'CVTERMSYNONYM',  'CVTERM_DBXREF',  'CVTERMPROP',
+						'DBXREFPROP')
 					}
                 );
                 $sth->execute;
