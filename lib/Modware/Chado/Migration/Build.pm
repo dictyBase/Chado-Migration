@@ -230,7 +230,6 @@ sub ACTION_migrate {
                 filters        => [ sub { $self->_clean_phylonode(@_) } ],
                 add_drop_table => 0
             },
-            force_overwrite  => 1,
             version_set      => $version_set,
             database_version => $current_version,
             to_version       => $new_version,
@@ -250,15 +249,35 @@ sub ACTION_migrate {
     }
 
     if ( @$version_set == 2 ) {
-        $self->deploy_handler->$prep_method(
-            {   from_version => $version_set->[0],
-                to_version   => $version_set->[1],
-                version_set  => $version_set
-            }
+
+        my $sql_file = catfile(
+            $self->args('migration_folder'),
+            $self->dbi_driver, $direction,
+            $version_set->[0] . '-' . $version_set->[1],
+            '001-auto.sql'
         );
+
+        if ( !-e $sql_file ) {
+            $self->deploy_handler->$prep_method(
+                {   from_version => $version_set->[0],
+                    to_version   => $version_set->[1],
+                    version_set  => $version_set
+                }
+            );
+        }
     }
     else {
         for my $i ( 0 .. scalar @$version_set - 2 ) {
+
+            my $sql_file = catfile(
+                $self->args('migration_folder'),
+                $self->dbi_driver,
+                $direction,
+                $version_set->[$i] . '-' . $version_set->[ $i + 1 ],
+                '001-auto.sql'
+            );
+            next if -e $sql_file;
+
             $self->deploy_handler->$prep_method(
                 {   from_version => $version_set->[$i],
                     to_version   => $version_set->[ $i + 1 ],
@@ -286,6 +305,20 @@ sub ACTION_prepare_migration {
         $version_set = [ sort { $b <=> $a } @$version_set ];
     }
     if ( @$version_set == 2 ) {
+        my $dir
+            = Path::Class::Dir->new( $self->args('migration_folder') )
+            ->subdir( $self->dbi_driver )->subdir($tag)
+            ->subdir( $version_set->[0] . '-' . $version_set->[1] );
+        make_path($dir);
+
+        my $file = $dir->file('001-auto.sql');
+        if ( !-e $file ) {
+            my $handler = $file->openw;
+            $handler->print(
+                '-- Write SQL statements below to run during migration');
+            $handler->close;
+        }
+
         make_path(
             catdir(
                 $self->args('migration_folder'),
@@ -299,18 +332,36 @@ sub ACTION_prepare_migration {
         );
     }
     else {
-        make_path(
-            catdir(
-                $self->args('migration_folder'),
-                '_common', $tag,
-                $version_set->[$_] . '-' . $version_set->[ $_ + 1 ]
-            ),
-            catdir(
-                $self->args('migration_folder'),
-                '_preprocess_schema', $tag,
-                $version_set->[$_] . '-' . $version_set->[ $_ + 1 ]
-            ),
-        ) for 0 .. scalar @$version_set - 2;
+        for my $i ( 0 .. scalar @$version_set - 2 ) {
+            my $dir
+                = Path::Class::Dir->new( $self->args('migration_folder') )
+                ->subdir( $self->dbi_driver )->subdir($tag)
+                ->subdir(
+                $version_set->[$i] . '-' . $version_set->[ $i + 1 ] );
+            my $file = $dir->file('001-auto.sql');
+            make_path($dir);
+
+            if ( !-e $file ) {
+                my $handler = $file->openw;
+                $handler->print(
+                    '-- Write SQL statements below to run during migration');
+                $handler->close;
+            }
+
+            make_path(
+                catdir(
+                    $self->args('migration_folder'),
+                    '_common', $tag,
+                    $version_set->[$i] . '-' . $version_set->[ $i + 1 ]
+                ),
+                catdir(
+                    $self->args('migration_folder'),
+                    '_preprocess_schema',
+                    $tag,
+                    $version_set->[$i] . '-' . $version_set->[ $i + 1 ]
+                ),
+            );
+        }
     }
 }
 
@@ -478,13 +529,13 @@ sub ACTION_set_release {
 }
 
 sub ACTION_create_data_folder {
-	my ($self) = @_;
-	my $arr = $self->args('ARGV');
-	my $name = $arr->[0] ? $arr->[0]: 'data';
-	my $release = $self->_release;
+    my ($self) = @_;
+    my $arr = $self->args('ARGV');
+    my $name = $arr->[0] ? $arr->[0] : 'data';
+    my $release = $self->_release;
 
-	my $folder = catdir($self->base_dir, $name, $release);
-	make_path $folder;
+    my $folder = catdir( $self->base_dir, $name, $release );
+    make_path $folder;
 }
 
 sub _patch_folder {
