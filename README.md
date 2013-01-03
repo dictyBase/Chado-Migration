@@ -1,22 +1,23 @@
-## Chado Migration
+# Chado Migration
 Module for Chado database migration
 
-### Setup
-#### Clone the repository
+## Setup
+### Clone the repository
 
 ```shell
 $_> git clone git://github.com/dictyBase/Chado-Migration.git
 ```
 
-#### Install Dependencies
+### Install Dependencies
 
 All the dependencies will be served from a local directory managed by
 [carton](https://metacpan.org/module/Carton).
 
 * Install carton using cpanm
-```shell
-$_> cpanm -n Carton
-```
+
+	 ```shell
+    $_> cpanm -n Carton
+   ```
 
 To install and manage cpanm with __local-lib__ read a short
 [guide](http://dictybase.github.com/perl-setup/index.html)
@@ -24,20 +25,22 @@ To install and manage cpanm with __local-lib__ read a short
 
 * Install modules using carton
   From the checkout folder
-```shell
-$_> carton install
-```
+
+   ```shell
+    $_> carton install
+   ```
 
 * Install Modware
 
 	*Deprecated*
+
 	```shell
 	$_> curl -O -L -k https://github.com/downloads/dictyBase/Modware/modware-03-22-2012.tar.gz\
 	  && carton install modware-03-22-2012.tar.gz \
 	    && rm modware-03-22-2012.tar.gz
 	```
 
-#### Building project
+### Building project
 
 ```shell
 $_> carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user '<user>' --password '<pass>' 
@@ -45,13 +48,13 @@ $_> carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user
   The __Build__ command have to be run for different database or if the chado/schema
   version have changed or if there is any change in  __Build.PL__ file. 
 
-##### Build options
+#### Build options
 
 + **--chado_version:** Version of chado database schema,  default is **1.2**
 + **--version:** Explicitly sets [BCS](https://metacpan.org/module/Bio::Chado::Schema)
                  version,  **not recommended**,  use the Schema.pm file for that.
 
-#### Bring database under version control
+### Bring database under version control
 
 ```shell
 $_> carton exec -- ./Build install_version
@@ -66,7 +69,7 @@ $_> carton exec -- ./Build chado_version_in_db
 1.2
 ```
 
-### Migration
+## Migration
 
 + Change the version in __Modware::Chado::Schema__ module.
 ```perl
@@ -103,31 +106,35 @@ $_> carton exec -- ./Build prepare_migration
     backend(Oracle/Postgresql/SQLite etc).
 
 + Run migration
-```shell
-$_> carton exec -- ./Build migrate
-```
 
-### Data Patches
+  ```shell
+  $_> carton exec -- ./Build migrate
+  ```
+
+## Data Patches
 These are perl scripts (*.pl files) that will be run independent of migration process. This
 system is created to manipulate data in database without changing its structure.
 
-#### Available data patch actions
+### Actions for running data patches
 Remember each of the action take the (--release) argument,  otherwise each action will
 prompt for it.
 
-+ **add_patch**
-```shell
-$_> carton exec -- ./Build add_patch add_residue --release r-2-20
-```
++ **add_patch:** Create a stub patch file with the given name
 
-+ **run_patch**
-```shell
-$_> carton exec -- ./Build run_patch 001add_residue.pl
-```
+  ```shell
+   $_> carton exec -- ./Build add_patch add_residue --release r-2-20
+  ```
 
-+ **run_all_patches**
-```shell
-$_> carton exec -- ./Build run_all_patches
-```
++ **run_patch:** Run a particular patch
 
-+ **list_patches**
+  ```shell
+  $_> carton exec -- ./Build run_patch 001add_residue.pl
+  ```
+
++ **run_all_patches:** Run all patches
+
+  ```shell
+  $_> carton exec -- ./Build run_all_patches
+  ```
+
++ **list_patches:** List of available patches to run
