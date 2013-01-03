@@ -19,8 +19,8 @@ All the dependencies will be served from a local directory managed by
     $_> cpanm -n Carton
    ```
 
-To install and manage cpanm with __local-lib__ read a short
-[guide](http://dictybase.github.com/perl-setup/index.html)
+   To install and manage cpanm with __local-lib__ read a short
+   [guide](http://dictybase.github.com/perl-setup/index.html)
 
 
 * Install modules using carton
@@ -52,7 +52,15 @@ $_> carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user
 
 + **--chado_version:** Version of chado database schema,  default is **1.2**
 + **--version:** Explicitly sets [BCS](https://metacpan.org/module/Bio::Chado::Schema)
-                 version,  **not recommended**,  use the Schema.pm file for that.
+                 version.
+
++ So to explicitly set a particular version
+  ```shell
+   $_> carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' 
+          --user '<user>' --password '<pass>' --version <version>
+   ```
+   Remember this value will be persisted for all actions which takes a **(--version)**
+   argument.
 
 ### Bring database under version control
 
@@ -60,6 +68,13 @@ $_> carton exec -- perl Build.PL --dsn 'dbi:Oracle:host=<host>;sid=<sid>' --user
 $_> carton exec -- ./Build install_version
 ```
 By default it will store chado version (1.2) and schema version (0.058) in the database.
+However,  to install a particular version ....
+
+```shell
+$_> carton exec -- ./Build install_version --version <version>
+```
+
+Now to check for version information in database
 
 ```shell
 $_> carton exec -- ./Build schema_version_in_db
@@ -109,6 +124,12 @@ $_> carton exec -- ./Build prepare_migration
 
   ```shell
   $_> carton exec -- ./Build migrate
+  ```
+
+  Migrate to a particular version
+
+  ```shell
+  $_> carton exec -- ./Build migrate --version <version>
   ```
 
 ## Data Patches
