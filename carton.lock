@@ -6992,7 +6992,7 @@
          "version" : "1.006901"
       },
       "Bio::Chado::Schema" : {
-         "dist" : "Bio-Chado-Schema-0.09000",
+         "dist" : "Bio-Chado-Schema-0.20000",
          "module" : "Bio::Chado::Schema",
          "mymeta" : {
             "abstract" : "A standard DBIx::Class layer for the Chado database schema.",
@@ -7000,7 +7000,7 @@
                "Robert Buels <rbuels@cpan.org>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Dist::Zilla version 4.200003, CPAN::Meta::Converter version 2.110930, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "generated_by" : "Dist::Zilla version 4.300014, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
             "license" : [
                "perl_5"
             ],
@@ -7022,12 +7022,13 @@
                },
                "configure" : {
                   "requires" : {
-                     "ExtUtils::MakeMaker" : "6.31"
+                     "ExtUtils::MakeMaker" : "6.30"
                   }
                },
                "runtime" : {
                   "requires" : {
                      "Bio::PrimarySeq" : 0,
+                     "Bio::Range" : 0,
                      "Bio::Root::Version" : "1.005002",
                      "Carp" : 0,
                      "Carp::Clan" : 0,
@@ -7035,7 +7036,10 @@
                      "DBIx::Class::Core" : 0,
                      "DBIx::Class::ResultSet" : 0,
                      "DBIx::Class::Schema" : 0,
-                     "DBIx::Class::Tree::NestedSet" : "0.07"
+                     "DBIx::Class::Tree::NestedSet" : "0.07",
+                     "base" : 0,
+                     "strict" : 0,
+                     "warnings" : 0
                   }
                }
             },
@@ -7049,93 +7053,93 @@
                   "url" : "http://github.com/solgenomics/bio-chado-schema"
                }
             },
-            "version" : "0.09000",
+            "version" : "0.20000",
             "x_Dist_Zilla" : {
                "plugins" : [
                   {
                      "class" : "Dist::Zilla::Plugin::GatherDir",
                      "name" : "@Filter/@Basic/GatherDir",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::PruneCruft",
                      "name" : "@Filter/@Basic/PruneCruft",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::ManifestSkip",
                      "name" : "@Filter/@Basic/ManifestSkip",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::MetaYAML",
                      "name" : "@Filter/@Basic/MetaYAML",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::License",
                      "name" : "@Filter/@Basic/License",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::ExtraTests",
                      "name" : "@Filter/@Basic/ExtraTests",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::ExecDir",
                      "name" : "@Filter/@Basic/ExecDir",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::ShareDir",
                      "name" : "@Filter/@Basic/ShareDir",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::MakeMaker",
                      "name" : "@Filter/@Basic/MakeMaker",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::Manifest",
                      "name" : "@Filter/@Basic/Manifest",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::TestRelease",
                      "name" : "@Filter/@Basic/TestRelease",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::ConfirmRelease",
                      "name" : "@Filter/@Basic/ConfirmRelease",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::UploadToCPAN",
                      "name" : "@Filter/@Basic/UploadToCPAN",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::MetaConfig",
                      "name" : "@Filter/MetaConfig",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::MetaJSON",
                      "name" : "@Filter/MetaJSON",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::PkgVersion",
                      "name" : "@Filter/PkgVersion",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::PodSyntaxTests",
                      "name" : "@Filter/PodSyntaxTests",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::NoTabsTests",
@@ -7145,12 +7149,12 @@
                   {
                      "class" : "Dist::Zilla::Plugin::PodCoverageTests",
                      "name" : "@Filter/PodCoverageTests",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::MetaResources",
                      "name" : "@Filter/MetaResources",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::Authority",
@@ -7163,19 +7167,14 @@
                      "version" : "0.02"
                   },
                   {
-                     "class" : "Dist::Zilla::Plugin::PodWeaver",
-                     "name" : "@Filter/PodWeaver",
-                     "version" : "3.101641"
-                  },
-                  {
                      "class" : "Dist::Zilla::Plugin::AutoPrereqs",
                      "name" : "@Filter/AutoPrereqs",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::NextRelease",
                      "name" : "@Filter/NextRelease",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::Prereqs",
@@ -7186,7 +7185,7 @@
                         }
                      },
                      "name" : "Prereqs",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::Prereqs",
@@ -7197,884 +7196,906 @@
                         }
                      },
                      "name" : "TestRequires",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::FinderCode",
                      "name" : ":InstallModules",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::FinderCode",
+                     "name" : ":IncModules",
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::FinderCode",
                      "name" : ":TestFiles",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::FinderCode",
                      "name" : ":ExecFiles",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
                   },
                   {
                      "class" : "Dist::Zilla::Plugin::FinderCode",
                      "name" : ":ShareFiles",
-                     "version" : "4.200003"
+                     "version" : "4.300014"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::FinderCode",
+                     "name" : ":MainModule",
+                     "version" : "4.300014"
                   }
                ],
                "zilla" : {
                   "class" : "Dist::Zilla::Dist::Builder",
                   "config" : {
-                     "is_trial" : 0
+                     "is_trial" : "0"
                   },
-                  "version" : "4.200003"
+                  "version" : "4.300014"
                }
             },
             "x_authority" : "cpan:RBUELS"
          },
          "name" : "Bio::Chado::Schema",
-         "pathname" : "R/RB/RBUELS/Bio-Chado-Schema-0.09000.tar.gz",
+         "pathname" : "R/RB/RBUELS/Bio-Chado-Schema-0.20000.tar.gz",
          "provides" : {
+            "Bio::Chado::NaturalDiversity::Reports" : {
+               "file" : "Bio/Chado/NaturalDiversity/Reports.pm",
+               "version" : "0.20000"
+            },
             "Bio::Chado::Schema" : {
                "file" : "Bio/Chado/Schema.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLine" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLine.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLineCvterm" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLineCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLineCvtermprop" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLineCvtermprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLineDbxref" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLineDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLineFeature" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLineFeature.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLineLibrary" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLineLibrary.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLinePub" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLinePub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLineRelationship" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLineRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLineSynonym" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLineSynonym.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLineprop" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLineprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::CellLine::CellLinepropPub" : {
                "file" : "Bio/Chado/Schema/Result/CellLine/CellLinepropPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Companalysis::Analysis" : {
                "file" : "Bio/Chado/Schema/Result/Companalysis/Analysis.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Companalysis::Analysisfeature" : {
                "file" : "Bio/Chado/Schema/Result/Companalysis/Analysisfeature.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Companalysis::Analysisfeatureprop" : {
                "file" : "Bio/Chado/Schema/Result/Companalysis/Analysisfeatureprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Companalysis::Analysisprop" : {
                "file" : "Bio/Chado/Schema/Result/Companalysis/Analysisprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::AllFeatureNames" : {
                "file" : "Bio/Chado/Schema/Result/Composite/AllFeatureNames.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::Dfeatureloc" : {
                "file" : "Bio/Chado/Schema/Result/Composite/Dfeatureloc.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FLoc" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FLoc.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FType" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FType.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeatureContains" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeatureContains.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeatureDifference" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeatureDifference.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeatureDisjoint" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeatureDisjoint.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeatureDistance" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeatureDistance.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeatureIntersection" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeatureIntersection.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeatureMeets" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeatureMeets.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeatureMeetsOnSameStrand" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeatureMeetsOnSameStrand.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeatureUnion" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeatureUnion.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FeaturesetMeets" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FeaturesetMeets.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FnrType" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FnrType.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::FpKey" : {
                "file" : "Bio/Chado/Schema/Result/Composite/FpKey.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::Gff3atts" : {
                "file" : "Bio/Chado/Schema/Result/Composite/Gff3atts.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::Gff3view" : {
                "file" : "Bio/Chado/Schema/Result/Composite/Gff3view.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Composite::Gffatts" : {
                "file" : "Bio/Chado/Schema/Result/Composite/Gffatts.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Contact::Contact" : {
                "file" : "Bio/Chado/Schema/Result/Contact/Contact.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Contact::ContactRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Contact/ContactRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Chadoprop" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Chadoprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CommonAncestorCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CommonAncestorCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CommonDescendantCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CommonDescendantCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Cv" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Cv.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CvCvtermCount" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CvCvtermCount.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CvCvtermCountWithObs" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CvCvtermCountWithObs.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CvLeaf" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CvLeaf.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CvLinkCount" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CvLinkCount.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CvPathCount" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CvPathCount.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CvRoot" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CvRoot.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Cvprop" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Cvprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Cvterm" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Cvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Cvterm::ResultSet" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Cvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CvtermDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CvtermDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::CvtermRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Cv/CvtermRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Cvtermpath" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Cvtermpath.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Cvtermprop" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Cvtermprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Cvtermsynonym" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Cvtermsynonym.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::Dbxrefprop" : {
                "file" : "Bio/Chado/Schema/Result/Cv/Dbxrefprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Cv::StatsPathsToRoot" : {
                "file" : "Bio/Chado/Schema/Result/Cv/StatsPathsToRoot.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::Eimage" : {
                "file" : "Bio/Chado/Schema/Result/Expression/Eimage.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::Expression" : {
                "file" : "Bio/Chado/Schema/Result/Expression/Expression.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::ExpressionCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Expression/ExpressionCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::ExpressionCvtermprop" : {
                "file" : "Bio/Chado/Schema/Result/Expression/ExpressionCvtermprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::ExpressionImage" : {
                "file" : "Bio/Chado/Schema/Result/Expression/ExpressionImage.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::ExpressionPub" : {
                "file" : "Bio/Chado/Schema/Result/Expression/ExpressionPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::Expressionprop" : {
                "file" : "Bio/Chado/Schema/Result/Expression/Expressionprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::FeatureExpression" : {
                "file" : "Bio/Chado/Schema/Result/Expression/FeatureExpression.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Expression::FeatureExpressionprop" : {
                "file" : "Bio/Chado/Schema/Result/Expression/FeatureExpressionprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::General::Db" : {
                "file" : "Bio/Chado/Schema/Result/General/Db.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::General::DbDbxrefCount" : {
                "file" : "Bio/Chado/Schema/Result/General/DbDbxrefCount.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::General::Dbxref" : {
                "file" : "Bio/Chado/Schema/Result/General/Dbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::General::Tableinfo" : {
                "file" : "Bio/Chado/Schema/Result/General/Tableinfo.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::Environment" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/Environment.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::EnvironmentCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/EnvironmentCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::FeatureGenotype" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/FeatureGenotype.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::Genotype" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/Genotype.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::Genotypeprop" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/Genotypeprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::Phendesc" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/Phendesc.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::PhenotypeComparison" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/PhenotypeComparison.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::PhenotypeComparisonCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/PhenotypeComparisonCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Genetic::Phenstatement" : {
                "file" : "Bio/Chado/Schema/Result/Genetic/Phenstatement.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Library::Library" : {
                "file" : "Bio/Chado/Schema/Result/Library/Library.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Library::LibraryCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Library/LibraryCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Library::LibraryDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Library/LibraryDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Library::LibraryFeature" : {
                "file" : "Bio/Chado/Schema/Result/Library/LibraryFeature.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Library::LibraryPub" : {
                "file" : "Bio/Chado/Schema/Result/Library/LibraryPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Library::LibrarySynonym" : {
                "file" : "Bio/Chado/Schema/Result/Library/LibrarySynonym.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Library::Libraryprop" : {
                "file" : "Bio/Chado/Schema/Result/Library/Libraryprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Library::LibrarypropPub" : {
                "file" : "Bio/Chado/Schema/Result/Library/LibrarypropPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Acquisition" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Acquisition.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::AcquisitionRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Mage/AcquisitionRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Acquisitionprop" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Acquisitionprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Arraydesign" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Arraydesign.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Arraydesignprop" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Arraydesignprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Assay" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Assay.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::AssayBiomaterial" : {
                "file" : "Bio/Chado/Schema/Result/Mage/AssayBiomaterial.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::AssayProject" : {
                "file" : "Bio/Chado/Schema/Result/Mage/AssayProject.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Assayprop" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Assayprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Biomaterial" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Biomaterial.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::BiomaterialDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Mage/BiomaterialDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::BiomaterialRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Mage/BiomaterialRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::BiomaterialTreatment" : {
                "file" : "Bio/Chado/Schema/Result/Mage/BiomaterialTreatment.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Biomaterialprop" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Biomaterialprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Channel" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Channel.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Control" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Control.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Element" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Element.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::ElementRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Mage/ElementRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Elementresult" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Elementresult.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::ElementresultRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Mage/ElementresultRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Magedocumentation" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Magedocumentation.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Mageml" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Mageml.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Protocol" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Protocol.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Protocolparam" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Protocolparam.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Quantification" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Quantification.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::QuantificationRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Mage/QuantificationRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Quantificationprop" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Quantificationprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Study" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Study.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::StudyAssay" : {
                "file" : "Bio/Chado/Schema/Result/Mage/StudyAssay.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Studydesign" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Studydesign.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Studydesignprop" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Studydesignprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Studyfactor" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Studyfactor.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Studyfactorvalue" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Studyfactorvalue.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Studyprop" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Studyprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::StudypropFeature" : {
                "file" : "Bio/Chado/Schema/Result/Mage/StudypropFeature.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Mage::Treatment" : {
                "file" : "Bio/Chado/Schema/Result/Mage/Treatment.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Map::Featuremap" : {
                "file" : "Bio/Chado/Schema/Result/Map/Featuremap.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Map::FeaturemapPub" : {
                "file" : "Bio/Chado/Schema/Result/Map/FeaturemapPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Map::Featurepos" : {
                "file" : "Bio/Chado/Schema/Result/Map/Featurepos.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Map::Featurerange" : {
                "file" : "Bio/Chado/Schema/Result/Map/Featurerange.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperiment" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperiment.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentContact" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentContact.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentDbxref" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentGenotype" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentGenotype.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentPhenotype" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentPhenotype.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentProject" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentProject.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentProtocol" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentProtocol.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentPub" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentStock" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentStock.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentStockDbxref" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentStockDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentStockprop" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentStockprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdExperimentprop" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdExperimentprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdGeolocation" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdGeolocation.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdGeolocationprop" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdGeolocationprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdProtocol" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdProtocol.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdProtocolReagent" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdProtocolReagent.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdProtocolprop" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdProtocolprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdReagent" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdReagent.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdReagentRelationship" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdReagentRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::NaturalDiversity::NdReagentprop" : {
                "file" : "Bio/Chado/Schema/Result/NaturalDiversity/NdReagentprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Organism::Organism" : {
                "file" : "Bio/Chado/Schema/Result/Organism/Organism.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Organism::OrganismDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Organism/OrganismDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Organism::Organismprop" : {
                "file" : "Bio/Chado/Schema/Result/Organism/Organismprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phenotype::FeaturePhenotype" : {
                "file" : "Bio/Chado/Schema/Result/Phenotype/FeaturePhenotype.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phenotype::Phenotype" : {
                "file" : "Bio/Chado/Schema/Result/Phenotype/Phenotype.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phenotype::PhenotypeCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Phenotype/PhenotypeCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
+            },
+            "Bio::Chado::Schema::Result::Phenotype::Phenotypeprop" : {
+               "file" : "Bio/Chado/Schema/Result/Phenotype/Phenotypeprop.pm",
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phylogeny::Phylonode" : {
                "file" : "Bio/Chado/Schema/Result/Phylogeny/Phylonode.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phylogeny::PhylonodeDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Phylogeny/PhylonodeDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phylogeny::PhylonodeOrganism" : {
                "file" : "Bio/Chado/Schema/Result/Phylogeny/PhylonodeOrganism.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phylogeny::PhylonodePub" : {
                "file" : "Bio/Chado/Schema/Result/Phylogeny/PhylonodePub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phylogeny::PhylonodeRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Phylogeny/PhylonodeRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phylogeny::Phylonodeprop" : {
                "file" : "Bio/Chado/Schema/Result/Phylogeny/Phylonodeprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phylogeny::Phylotree" : {
                "file" : "Bio/Chado/Schema/Result/Phylogeny/Phylotree.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Phylogeny::PhylotreePub" : {
                "file" : "Bio/Chado/Schema/Result/Phylogeny/PhylotreePub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Project::Project" : {
                "file" : "Bio/Chado/Schema/Result/Project/Project.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Project::ProjectContact" : {
                "file" : "Bio/Chado/Schema/Result/Project/ProjectContact.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Project::ProjectPub" : {
                "file" : "Bio/Chado/Schema/Result/Project/ProjectPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Project::ProjectRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Project/ProjectRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Project::Projectprop" : {
                "file" : "Bio/Chado/Schema/Result/Project/Projectprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Pub::Pub" : {
                "file" : "Bio/Chado/Schema/Result/Pub/Pub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Pub::PubDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Pub/PubDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Pub::PubRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Pub/PubRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Pub::Pubauthor" : {
                "file" : "Bio/Chado/Schema/Result/Pub/Pubauthor.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Pub::Pubprop" : {
                "file" : "Bio/Chado/Schema/Result/Pub/Pubprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::Cvtermsynonym" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/Cvtermsynonym.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::Feature" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/Feature.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureCvtermDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureCvtermDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureCvtermPub" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureCvtermPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureCvtermprop" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureCvtermprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeaturePub" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeaturePub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeaturePubprop" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeaturePubprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureRelationshipPub" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureRelationshipPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureRelationshipprop" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureRelationshipprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureRelationshippropPub" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureRelationshippropPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeatureSynonym" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeatureSynonym.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::Featureloc" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/Featureloc.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeaturelocPub" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeaturelocPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::Featureprop" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/Featureprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::FeaturepropPub" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/FeaturepropPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::IntronCombinedView" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/IntronCombinedView.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::IntronlocView" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/IntronlocView.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::ProteinCodingGene" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/ProteinCodingGene.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::Synonym" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/Synonym.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Sequence::TypeFeatureCount" : {
                "file" : "Bio/Chado/Schema/Result/Sequence/TypeFeatureCount.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::Stock" : {
                "file" : "Bio/Chado/Schema/Result/Stock/Stock.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
+            },
+            "Bio::Chado::Schema::Result::Stock::Stock::ResultSet" : {
+               "file" : "Bio/Chado/Schema/Result/Stock/Stock.pm",
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockCvtermprop" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockCvtermprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockDbxref" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockDbxref.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockDbxrefprop" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockDbxrefprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockGenotype" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockGenotype.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockPub" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockRelationship" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockRelationship.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockRelationshipCvterm" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockRelationshipCvterm.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockRelationshipPub" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockRelationshipPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::Stockcollection" : {
                "file" : "Bio/Chado/Schema/Result/Stock/Stockcollection.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockcollectionStock" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockcollectionStock.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::Stockcollectionprop" : {
                "file" : "Bio/Chado/Schema/Result/Stock/Stockcollectionprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::Stockprop" : {
                "file" : "Bio/Chado/Schema/Result/Stock/Stockprop.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Result::Stock::StockpropPub" : {
                "file" : "Bio/Chado/Schema/Result/Stock/StockpropPub.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Test" : {
                "file" : "Bio/Chado/Schema/Test.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             },
             "Bio::Chado::Schema::Util" : {
                "file" : "Bio/Chado/Schema/Util.pm",
-               "version" : "0.09000"
+               "version" : "0.20000"
             }
          },
-         "version" : "0.09000"
+         "version" : "0.20000"
       },
       "CPAN" : {
          "dist" : "CPAN-1.9800",
@@ -10215,7 +10236,7 @@
          "version" : "1.27"
       },
       "DBD::SQLite" : {
-         "dist" : "DBD-SQLite-1.33",
+         "dist" : "DBD-SQLite-1.37",
          "module" : "DBD::SQLite",
          "mymeta" : {
             "abstract" : "Self Contained SQLite RDBMS in a DBI Driver",
@@ -10223,7 +10244,7 @@
                "Adam Kennedy <adamk@cpan.org>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.112150",
+            "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
             "license" : [
                "perl_5"
             ],
@@ -10276,14 +10297,14 @@
                },
                "x_MailingList" : "http://lists.scsys.co.uk/cgi-bin/mailman/listinfo/dbd-sqlite"
             },
-            "version" : "1.33"
+            "version" : "1.37"
          },
          "name" : "DBD::SQLite",
-         "pathname" : "A/AD/ADAMK/DBD-SQLite-1.33.tar.gz",
+         "pathname" : "A/AD/ADAMK/DBD-SQLite-1.37.tar.gz",
          "provides" : {
             "DBD::SQLite" : {
                "file" : "DBD/SQLite.pm",
-               "version" : "1.33"
+               "version" : "1.37"
             },
             "DBD::SQLite::db" : {
                "file" : "DBD/SQLite.pm"
@@ -10292,7 +10313,7 @@
                "file" : "DBD/SQLite.pm"
             }
          },
-         "version" : "1.33"
+         "version" : "1.37"
       },
       "DBI" : {
          "dist" : "DBI-1.616",
@@ -11148,7 +11169,7 @@
          "version" : "0.002001"
       },
       "DBIx::Class::DeploymentHandler" : {
-         "dist" : "DBIx-Class-DeploymentHandler-0.001005",
+         "dist" : "DBIx-Class-DeploymentHandler-0.002203",
          "module" : "DBIx::Class::DeploymentHandler",
          "mymeta" : {
             "abstract" : "Extensible DBIx::Class deployment",
@@ -11156,7 +11177,7 @@
                "Arthur Axel \"fREW\" Schmidt <frioux+cpan@gmail.com>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110930, CPAN::Meta::Converter version 2.112150",
+            "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
             "license" : [
                "perl_5"
             ],
@@ -11171,137 +11192,152 @@
                },
                "configure" : {
                   "requires" : {
-                     "ExtUtils::MakeMaker" : "6.31"
+                     "ExtUtils::MakeMaker" : "6.30"
                   }
                },
                "runtime" : {
                   "requires" : {
                      "Carp" : 0,
                      "Carp::Clan" : 0,
-                     "DBD::SQLite" : 0,
+                     "Context::Preserve" : "0.01",
+                     "DBD::SQLite" : "1.35",
                      "DBIx::Class" : "0.08121",
-                     "File::Path" : "2.08",
-                     "File::Touch" : "0.08",
-                     "Log::Contextual" : "0.00300",
-                     "Method::Signatures::Simple" : "0.05",
+                     "File::Temp" : 0,
+                     "Log::Contextual" : "0.004200",
                      "Moose" : "1.0",
                      "MooseX::Role::Parameterized" : "0.18",
+                     "Path::Class" : "0.26",
                      "SQL::Translator" : "0.11005",
-                     "Test::Exception" : 0,
+                     "Sub::Exporter::Progressive" : 0,
+                     "Test::Fatal" : "0.006",
                      "Test::More" : "0.88",
+                     "Test::Requires" : "0.06",
+                     "Text::Brew" : "0.02",
                      "Try::Tiny" : 0,
                      "aliased" : 0,
                      "autodie" : 0,
-                     "namespace::autoclean" : 0
+                     "namespace::autoclean" : 0,
+                     "parent" : "0.225"
                   }
                }
             },
             "release_status" : "stable",
             "resources" : {
+               "bugtracker" : {
+                  "web" : "https://github.com/frioux/DBIx-Class-DeploymentHandler/issues"
+               },
                "repository" : {
                   "type" : "git",
                   "url" : "git://git.shadowcat.co.uk/dbsrgits/DBIx-Class-DeploymentHandler.git"
                }
             },
-            "version" : "0.001005"
+            "version" : "0.002203"
          },
          "name" : "DBIx::Class::DeploymentHandler",
-         "pathname" : "F/FR/FREW/DBIx-Class-DeploymentHandler-0.001005.tar.gz",
+         "pathname" : "F/FR/FREW/DBIx-Class-DeploymentHandler-0.002203.tar.gz",
          "provides" : {
             "DBIx::Class::DeploymentHandler" : {
                "file" : "DBIx/Class/DeploymentHandler.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::Dad" : {
                "file" : "DBIx/Class/DeploymentHandler/Dad.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::DeployMethod::SQL::Translator" : {
                "file" : "DBIx/Class/DeploymentHandler/DeployMethod/SQL/Translator.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::DeployMethod::SQL::Translator::Deprecated" : {
                "file" : "DBIx/Class/DeploymentHandler/DeployMethod/SQL/Translator/Deprecated.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
+            },
+            "DBIx::Class::DeploymentHandler::DeployMethod::SQL::Translator::ScriptHelpers" : {
+               "file" : "DBIx/Class/DeploymentHandler/DeployMethod/SQL/Translator/ScriptHelpers.pm",
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::Deprecated" : {
                "file" : "DBIx/Class/DeploymentHandler/Deprecated.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::HandlesDeploy" : {
                "file" : "DBIx/Class/DeploymentHandler/HandlesDeploy.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::HandlesVersionStorage" : {
                "file" : "DBIx/Class/DeploymentHandler/HandlesVersionStorage.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::HandlesVersioning" : {
                "file" : "DBIx/Class/DeploymentHandler/HandlesVersioning.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
+            },
+            "DBIx::Class::DeploymentHandler::LogImporter" : {
+               "file" : "DBIx/Class/DeploymentHandler/LogImporter.pm",
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::Logger" : {
                "file" : "DBIx/Class/DeploymentHandler/Logger.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::Types" : {
                "file" : "DBIx/Class/DeploymentHandler/Types.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionHandler::DatabaseToSchemaVersions" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionHandler/DatabaseToSchemaVersions.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionHandler::ExplicitVersions" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionHandler/ExplicitVersions.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionHandler::Monotonic" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionHandler/Monotonic.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionStorage::Deprecated" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionStorage/Deprecated.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionStorage::Deprecated::Component" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionStorage/Deprecated/Component.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionStorage::Deprecated::VersionResult" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionStorage/Deprecated/VersionResult.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionStorage::Deprecated::VersionResultSet" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionStorage/Deprecated/VersionResultSet.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionStorage::Standard" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionStorage/Standard.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionStorage::Standard::Component" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionStorage/Standard/Component.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionStorage/Standard/VersionResult.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResultSet" : {
                "file" : "DBIx/Class/DeploymentHandler/VersionStorage/Standard/VersionResultSet.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::WithApplicatorDumple" : {
                "file" : "DBIx/Class/DeploymentHandler/WithApplicatorDumple.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             },
             "DBIx::Class::DeploymentHandler::WithReasonableDefaults" : {
                "file" : "DBIx/Class/DeploymentHandler/WithReasonableDefaults.pm",
-               "version" : "0.001005"
+               "version" : "0.002203"
             }
          },
-         "version" : "0.001005"
+         "version" : "0.002203"
       },
       "DBIx::Class::Fixtures" : {
          "dist" : "DBIx-Class-Fixtures-1.001013",
@@ -22858,7 +22894,7 @@
          "version" : "0.21"
       },
       "Log::Contextual" : {
-         "dist" : "Log-Contextual-0.004001",
+         "dist" : "Log-Contextual-0.004300",
          "module" : "Log::Contextual",
          "mymeta" : {
             "abstract" : "Simple logging interface with a contextual log",
@@ -22866,7 +22902,7 @@
                "frew - Arthur Axel \"fREW\" Schmidt <frioux@gmail.com>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Module::Install version 1.01, CPAN::Meta::Converter version 2.112150",
+            "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
             "license" : [
                "perl_5"
             ],
@@ -22884,18 +22920,21 @@
             "prereqs" : {
                "build" : {
                   "requires" : {
-                     "ExtUtils::MakeMaker" : "6.42"
+                     "ExtUtils::MakeMaker" : "6.59",
+                     "Test::Fatal" : 0
                   }
                },
                "configure" : {
                   "requires" : {
-                     "ExtUtils::MakeMaker" : "6.42"
+                     "ExtUtils::MakeMaker" : "6.59"
                   }
                },
                "runtime" : {
                   "requires" : {
+                     "Carp" : 0,
                      "Data::Dumper::Concise" : 0,
                      "Exporter::Declare" : "0.105",
+                     "Scalar::Util" : 0,
                      "perl" : "5.006"
                   }
                }
@@ -22906,15 +22945,15 @@
                   "http://dev.perl.org/licenses/"
                ]
             },
-            "version" : "0.004001",
+            "version" : "0.004300",
             "x_module_name" : "Log::Contextual"
          },
          "name" : "Log::Contextual",
-         "pathname" : "F/FR/FREW/Log-Contextual-0.004001.tar.gz",
+         "pathname" : "F/FR/FREW/Log-Contextual-0.004300.tar.gz",
          "provides" : {
             "Log::Contextual" : {
                "file" : "Log/Contextual.pm",
-               "version" : "0.004001"
+               "version" : "0.004300"
             },
             "Log::Contextual::SimpleLogger" : {
                "file" : "Log/Contextual/SimpleLogger.pm"
@@ -22926,7 +22965,7 @@
                "file" : "Log/Contextual/WarnLogger.pm"
             }
          },
-         "version" : "0.004001"
+         "version" : "0.004300"
       },
       "MRO::Compat" : {
          "dist" : "MRO-Compat-0.11",
@@ -27013,7 +27052,7 @@
          "version" : "1.965001"
       },
       "Path::Class" : {
-         "dist" : "Path-Class-0.24",
+         "dist" : "Path-Class-0.29",
          "module" : "Path::Class",
          "mymeta" : {
             "abstract" : "Cross-platform path specification manipulation",
@@ -27035,7 +27074,8 @@
                   "requires" : {
                      "Module::Build" : "0.3601",
                      "Test" : 0,
-                     "Test::More" : 0
+                     "Test::More" : 0,
+                     "warnings" : 0
                   }
                },
                "configure" : {
@@ -27055,7 +27095,9 @@
                      "File::stat" : 0,
                      "IO::Dir" : 0,
                      "IO::File" : 0,
-                     "overload" : 0
+                     "base" : 0,
+                     "overload" : 0,
+                     "strict" : 0
                   }
                }
             },
@@ -27065,32 +27107,33 @@
                   "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Path-Class"
                },
                "repository" : {
-                  "url" : "http://perl-path-class.googlecode.com/svn/trunk"
+                  "type" : "git",
+                  "url" : "git://github.com/kenahoo/Path-Class.git"
                }
             },
-            "version" : "0.24"
+            "version" : "0.29"
          },
          "name" : "Path::Class",
-         "pathname" : "K/KW/KWILLIAMS/Path-Class-0.24.tar.gz",
+         "pathname" : "K/KW/KWILLIAMS/Path-Class-0.29.tar.gz",
          "provides" : {
             "Path::Class" : {
                "file" : "Path/Class.pm",
-               "version" : "0.24"
+               "version" : "0.29"
             },
             "Path::Class::Dir" : {
                "file" : "Path/Class/Dir.pm",
-               "version" : "0.24"
+               "version" : "0.29"
             },
             "Path::Class::Entity" : {
                "file" : "Path/Class/Entity.pm",
-               "version" : "0.24"
+               "version" : "0.29"
             },
             "Path::Class::File" : {
                "file" : "Path/Class/File.pm",
-               "version" : "0.24"
+               "version" : "0.29"
             }
          },
-         "version" : "0.24"
+         "version" : "0.29"
       },
       "Perl::OSType" : {
          "dist" : "Perl-OSType-1.002",
@@ -28427,6 +28470,58 @@
             }
          },
          "version" : "0.982"
+      },
+      "Sub::Exporter::Progressive" : {
+         "dist" : "Sub-Exporter-Progressive-0.001006",
+         "module" : "Sub::Exporter::Progressive",
+         "mymeta" : {
+            "abstract" : "Only use Sub::Exporter if you need it",
+            "author" : [
+               "frew - Arthur Axel Schmidt (cpan:FREW) <frioux+cpan@gmail.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Sub-Exporter-Progressive",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "Test::More" : "0.89"
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "version" : "0.001006"
+         },
+         "name" : "Sub::Exporter::Progressive",
+         "pathname" : "L/LE/LEONT/Sub-Exporter-Progressive-0.001006.tar.gz",
+         "provides" : {
+            "Sub::Exporter::Progressive" : {
+               "file" : "Sub/Exporter/Progressive.pm",
+               "version" : "0.001006"
+            }
+         },
+         "version" : "0.001006"
       },
       "Sub::Install" : {
          "dist" : "Sub-Install-0.925",
@@ -30195,6 +30290,51 @@
          },
          "version" : "0.02"
       },
+      "Text::Brew" : {
+         "dist" : "Text-Brew-0.02",
+         "module" : "Text::Brew",
+         "mymeta" : {
+            "abstract" : "unknown",
+            "author" : [
+               "unknown"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.26, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Text-Brew",
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Test::More" : 0
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "0.02",
+            "x_installdirs" : "site",
+            "x_version_from" : "lib/Text/Brew.pm"
+         },
+         "name" : "Text::Brew",
+         "pathname" : "K/KC/KCIVEY/Text-Brew-0.02.tar.gz",
+         "provides" : {
+            "Text::Brew" : {
+               "file" : "Text/Brew.pm",
+               "version" : "0.02"
+            }
+         },
+         "version" : "0.02"
+      },
       "Text::Diff" : {
          "dist" : "Text-Diff-1.41",
          "module" : "Text::Diff",
@@ -31903,7 +32043,7 @@
       },
       "pmtools" : {
          "dist" : "pmtools-1.10",
-         "module" : "Devel::Loaded",
+         "module" : "pmtools",
          "mymeta" : {
             "abstract" : "unknown",
             "author" : [
@@ -31949,7 +32089,8 @@
             "Devel::Loaded" : {
                "file" : "Devel/Loaded.pm",
                "version" : "1.10"
-            }
+            },
+            "pmtools" : {}
          },
          "version" : "1.10"
       },
