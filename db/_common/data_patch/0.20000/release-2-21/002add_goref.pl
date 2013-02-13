@@ -34,16 +34,12 @@
     package Runnable;
 
     use IO::File;
+    use IO::String;
     use Moose;
     use Modware::Publication::DictyBase;
     use Text::Names qw/parseName isCommonSurname isCommonFirstname/;
 
     has 'names' => (
-        is  => 'rw',
-        isa => 'Str'
-    );
-
-    has 'input' => (
         is  => 'rw',
         isa => 'Str'
     );
@@ -66,9 +62,9 @@
         }
     }
 
-    sub parse_GO_ref {
-        my ($self) = @_;
-        my $io = IO::File->new( $self->input, 'r' );
+    sub parse_go_ref {
+        my ( $self, $input ) = @_;
+        my $io     = IO::String->new($input);
         my $go_ref = GORef->new;
         my @go_refs;
         while ( my $line = $io->getline ) {
@@ -90,7 +86,10 @@
                 my ( $y1, $y2 ) = split( '-', $val );
                 $val = $y2;
             }
-            $go_ref->$id( $self->trim($val) );
+            $id = $self->trim($id);
+            if ($id) {
+                $go_ref->$id( $self->trim($val) );
+            }
         }
         return @go_refs;
     }
@@ -153,6 +152,7 @@
 
     1;
 
+    use LWP::UserAgent;
     use Modware::DataSource::Chado;
 
     sub {
@@ -173,22 +173,29 @@
             $dh->schema );
         transform( Modware::DataSource::Chado->instance );
 
-        my $run        = Runnable->new;
-        my $input_path = $dir->subdir($release)->file('go_references.txt');
-        $run->input( $input_path->stringify );
+        my $run = Runnable->new;
+
         my $names_path = $dir->subdir($release)->file('authors.txt');
         $run->names( $names_path->stringify );
 
-        # -- code below run under a transaction
-        my $guard = $dh->schema->txn_scope_guard;
+        my $ua       = LWP::UserAgent->new;
+        my $url      = 'http://www.geneontology.org/doc/GO.references';
+        my $response = $ua->get($url);
+        my @go_refs;
+        if ( $response->is_success ) {
+            @go_refs = $run->parse_go_ref( $response->decoded_content );
+        }
 
         if ( $run->names ) {
             $run->set_authors( $run->names );
         }
-        my @go_refs = $run->parse_GO_ref( $run->input );
+
+        # -- code below run under a transaction
+        my $guard = $dh->schema->txn_scope_guard;
 
         foreach my $go_ref (@go_refs) {
             my $id = $go_ref->go_ref_id;
+            next if ( !$id );
             $id =~ s/^GO_REF://x;
             my $ref = Modware::Publication::DictyBase->new( id => $id );
             $ref->source( $go_ref->source );
@@ -202,10 +209,9 @@
                 $ref = $run->handle_authors( $go_ref->authors, $ref );
             }
             $ref->create;
-            print $go_ref->go_ref_id . ": Reference created !\n";
         }
-
         $guard->commit;
+        print scalar(@go_refs) . " GO_REF references created\n";
 
         sub transform {
             my ($schema) = @_;
