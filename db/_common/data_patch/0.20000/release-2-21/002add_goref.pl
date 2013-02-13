@@ -39,11 +39,6 @@
     use Modware::Publication::DictyBase;
     use Text::Names qw/parseName isCommonSurname isCommonFirstname/;
 
-    has 'names' => (
-        is  => 'rw',
-        isa => 'Str'
-    );
-
     has 'authors' => (
         traits  => ['Hash'],
         is      => 'rw',
@@ -52,9 +47,9 @@
     );
 
     sub set_authors {
-        my ($self) = @_;
-        my $FH = IO::File->new( $self->names, 'r' );
-        my $i = 0;
+        my ( $self, $names ) = @_;
+        my $FH = IO::String->new($names);
+        my $i  = 0;
         while ( my $line = $FH->getline ) {
             chomp($line);
             $self->set_author( $line => $i );
@@ -175,9 +170,6 @@
 
         my $run = Runnable->new;
 
-        my $names_path = $dir->subdir($release)->file('authors.txt');
-        $run->names( $names_path->stringify );
-
         my $ua       = LWP::UserAgent->new;
         my $url      = 'http://www.geneontology.org/doc/GO.references';
         my $response = $ua->get($url);
@@ -186,8 +178,11 @@
             @go_refs = $run->parse_go_ref( $response->decoded_content );
         }
 
-        if ( $run->names ) {
-            $run->set_authors( $run->names );
+        my $names
+            = "Alessandro Sette\nGiorgio Valle\nPompeo Volpe\nBali Pulendran\nQ. Alison Yao\nPascale Gaudet\nWasila Dahdul\nCeri Van Slyke\nChristopher J. Mungall\nAlexander D. Diehl";
+
+        if ($names) {
+            $run->set_authors($names);
         }
 
         # -- code below run under a transaction
@@ -211,7 +206,7 @@
             $ref->create;
         }
         $guard->commit;
-        print scalar(@go_refs) . " GO_REF references created\n";
+        print scalar(@go_refs) - 1 . " GO_REF references created\n";
 
         sub transform {
             my ($schema) = @_;
