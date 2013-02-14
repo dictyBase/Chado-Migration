@@ -31033,6 +31033,93 @@
          "target" : "XML::Simple",
          "version" : "2.20"
       },
+      "XML::Twig" : {
+         "dist" : "XML-Twig-3.42",
+         "mymeta" : {
+            "abstract" : "XML, The Perl Way",
+            "author" : [
+               "Michel Rodriguez <mirod@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "XML-Twig",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "XML::Parser" : "2.23"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "repository" : {
+                  "url" : "http://github.com/mirod/xmltwig"
+               }
+            },
+            "version" : "3.42"
+         },
+         "name" : "XML::Twig",
+         "pathname" : "M/MI/MIROD/XML-Twig-3.42.tar.gz",
+         "provides" : {
+            "XML::Twig" : {
+               "file" : "XML/Twig.pm",
+               "version" : "3.42"
+            },
+            "XML::Twig::Elt" : {
+               "file" : "XML/Twig.pm"
+            },
+            "XML::Twig::Entity" : {
+               "file" : "XML/Twig.pm"
+            },
+            "XML::Twig::Entity_list" : {
+               "file" : "XML/Twig.pm"
+            },
+            "XML::Twig::XPath" : {
+               "file" : "XML/Twig/XPath.pm",
+               "version" : "0.02"
+            },
+            "XML::Twig::XPath::Attribute" : {
+               "file" : "XML/Twig/XPath.pm"
+            },
+            "XML::Twig::XPath::Elt" : {
+               "file" : "XML/Twig/XPath.pm"
+            },
+            "XML::Twig::XPath::Namespace" : {
+               "file" : "XML/Twig/XPath.pm"
+            },
+            "XML::XPath::NodeSet" : {
+               "file" : "XML/Twig/XPath.pm"
+            },
+            "XML::XPathEngine::NodeSet" : {
+               "file" : "XML/Twig/XPath.pm"
+            }
+         },
+         "target" : "XML::Twig::XPath",
+         "version" : "3.42"
+      },
       "XML::Writer" : {
          "dist" : "XML-Writer-0.612",
          "mymeta" : {
@@ -31087,6 +31174,144 @@
          },
          "target" : "XML::Writer",
          "version" : "0.612"
+      },
+      "XML::XPath" : {
+         "dist" : "XML-XPath-1.13",
+         "mymeta" : {
+            "abstract" : "a set of modules for parsing and evaluating XPath statements",
+            "author" : [
+               "Matt Sergeant, AxKit.com Ltd"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "XML-XPath",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "XML::Parser" : "2.23"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "1.13"
+         },
+         "name" : "XML::XPath",
+         "pathname" : "M/MS/MSERGEANT/XML-XPath-1.13.tar.gz",
+         "provides" : {
+            "XML::XPath" : {
+               "file" : "XML/XPath.pm",
+               "version" : "1.13"
+            },
+            "XML::XPath::Boolean" : {
+               "file" : "XML/XPath/Boolean.pm"
+            },
+            "XML::XPath::Builder" : {
+               "file" : "XML/XPath/Builder.pm"
+            },
+            "XML::XPath::Expr" : {
+               "file" : "XML/XPath/Expr.pm"
+            },
+            "XML::XPath::Function" : {
+               "file" : "XML/XPath/Function.pm"
+            },
+            "XML::XPath::Literal" : {
+               "file" : "XML/XPath/Literal.pm"
+            },
+            "XML::XPath::LocationPath" : {
+               "file" : "XML/XPath/LocationPath.pm"
+            },
+            "XML::XPath::Node" : {
+               "file" : "XML/XPath/Node.pm"
+            },
+            "XML::XPath::Node::Attribute" : {
+               "file" : "XML/XPath/Node/Attribute.pm"
+            },
+            "XML::XPath::Node::AttributeImpl" : {
+               "file" : "XML/XPath/Node/Attribute.pm"
+            },
+            "XML::XPath::Node::Comment" : {
+               "file" : "XML/XPath/Node/Comment.pm"
+            },
+            "XML::XPath::Node::CommentImpl" : {
+               "file" : "XML/XPath/Node/Comment.pm"
+            },
+            "XML::XPath::Node::Element" : {
+               "file" : "XML/XPath/Node/Element.pm"
+            },
+            "XML::XPath::Node::ElementImpl" : {
+               "file" : "XML/XPath/Node/Element.pm"
+            },
+            "XML::XPath::Node::Namespace" : {
+               "file" : "XML/XPath/Node/Namespace.pm"
+            },
+            "XML::XPath::Node::NamespaceImpl" : {
+               "file" : "XML/XPath/Node/Namespace.pm"
+            },
+            "XML::XPath::Node::PI" : {
+               "file" : "XML/XPath/Node/PI.pm"
+            },
+            "XML::XPath::Node::PIImpl" : {
+               "file" : "XML/XPath/Node/PI.pm"
+            },
+            "XML::XPath::Node::Text" : {
+               "file" : "XML/XPath/Node/Text.pm"
+            },
+            "XML::XPath::Node::TextImpl" : {
+               "file" : "XML/XPath/Node/Text.pm"
+            },
+            "XML::XPath::NodeImpl" : {
+               "file" : "XML/XPath/Node.pm"
+            },
+            "XML::XPath::NodeSet" : {
+               "file" : "XML/XPath/NodeSet.pm"
+            },
+            "XML::XPath::Number" : {
+               "file" : "XML/XPath/Number.pm"
+            },
+            "XML::XPath::Parser" : {
+               "file" : "XML/XPath/Parser.pm"
+            },
+            "XML::XPath::PerlSAX" : {
+               "file" : "XML/XPath/PerlSAX.pm"
+            },
+            "XML::XPath::Root" : {
+               "file" : "XML/XPath/Root.pm"
+            },
+            "XML::XPath::Step" : {
+               "file" : "XML/XPath/Step.pm"
+            },
+            "XML::XPath::Variable" : {
+               "file" : "XML/XPath/Variable.pm"
+            },
+            "XML::XPath::XMLParser" : {
+               "file" : "XML/XPath/XMLParser.pm"
+            }
+         },
+         "target" : "XML::XPath",
+         "version" : "1.13"
       },
       "YAML" : {
          "dist" : "YAML-0.77",
